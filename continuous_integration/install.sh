@@ -60,6 +60,8 @@ fi
 
 pip install psutil memory_profiler
 
+pip install -e .
+
 if [[ "$COVERAGE" == true ]]; then
     pip install codecov
 fi
