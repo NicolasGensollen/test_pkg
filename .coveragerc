@@ -1,0 +1,6 @@
+[run]
+branch = True
+parallel = True
+omit =
+    */toy_pkg/tests/*
+    */toy_pkg/*/tests/*
