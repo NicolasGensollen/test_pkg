@@ -42,6 +42,7 @@ echo_requirements_string() {
 create_new_travis_env() {
     echo "inside create_new_travis_env..."
     REQUIREMENTS=$(echo_requirements_string)
+    echo "left echo_requirements_strings"
     echo $REQUIREMENTS
     echo $PIP_FLAGS
     pip install --upgrade $PIP_FLAGS ${REQUIREMENTS}
