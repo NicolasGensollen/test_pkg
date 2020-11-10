@@ -16,7 +16,7 @@ echo_requirements_string() {
     # if yes which version to install. For example:
     #   - for numpy, NUMPY_VERSION is used
     echo "inside echo_requirements_string..."
-    TO_INSTALL_ALWAYS="pip pytest"
+    TO_INSTALL_ALWAYS="pytest"
     REQUIREMENTS="$TO_INSTALL_ALWAYS"
     TO_INSTALL_MAYBE="numpy matplotlib flake8"
     for PACKAGE in $TO_INSTALL_MAYBE; do
