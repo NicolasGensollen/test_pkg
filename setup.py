@@ -11,7 +11,7 @@ setuptools.setup(
     description="A small and useless example package",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/NicolasGensollen/tests",
+    url="https://github.com/NicolasGensollen/test_pkg",
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
