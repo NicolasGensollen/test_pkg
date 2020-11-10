@@ -15,6 +15,7 @@ echo_requirements_string() {
     # environment variables to know whether to install a given package and
     # if yes which version to install. For example:
     #   - for numpy, NUMPY_VERSION is used
+    echo "inside echo_requirements_string..."
     TO_INSTALL_ALWAYS="pip pytest"
     REQUIREMENTS="$TO_INSTALL_ALWAYS"
     TO_INSTALL_MAYBE="numpy matplotlib flake8"
@@ -49,6 +50,7 @@ create_new_travis_env() {
 }
 
 if [[ "$DISTRIB" == "travisci" ]]; then
+    echo "Travisci distribution."
     create_new_travis_env
 else
     echo "Unrecognized distribution ($DISTRIB); cannot setup CI environment."
