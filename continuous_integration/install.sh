@@ -20,17 +20,13 @@ echo_requirements_string() {
     REQUIREMENTS="$TO_INSTALL_ALWAYS"
     TO_INSTALL_MAYBE="numpy matplotlib flake8"
     for PACKAGE in $TO_INSTALL_MAYBE; do
-        echo $PACKAGE
         # Capitalize package name and add _VERSION
         PACKAGE_VERSION_VARNAME="${PACKAGE^^}_VERSION"
-        echo $PACKAGE_VERSION_VARNAME
         # replace - by _, needed for scikit-learn for example
         PACKAGE_VERSION_VARNAME="${PACKAGE_VERSION_VARNAME//-/_}"
-        echo $PACKAGE_VERSION_VARNAME
         # dereference $PACKAGE_VERSION_VARNAME to figure out the
         # version to install
         PACKAGE_VERSION="${!PACKAGE_VERSION_VARNAME}"
-        echo $PACKAGE_VERSION
         if [[ -n "$PACKAGE_VERSION" ]]; then
             if [[ "$PACKAGE_VERSION" == "*" ]]; then
                 REQUIREMENTS="$REQUIREMENTS $PACKAGE"
@@ -38,6 +34,7 @@ echo_requirements_string() {
                 REQUIREMENTS="$REQUIREMENTS $PACKAGE==$PACKAGE_VERSION"
             fi
         fi
+        echo $REQUIREMENTS
     done
     echo $REQUIREMENTS
 }
@@ -46,7 +43,9 @@ create_new_travis_env() {
     echo "inside create_new_travis_env..."
     REQUIREMENTS=$(echo_requirements_string)
     echo $REQUIREMENTS
+    echo $PIP_FLAGS
     pip install --upgrade $PIP_FLAGS ${REQUIREMENTS}
+    echo "next..."
     pip install --upgrade pytest pytest-cov
 
     if [[ "$INSTALL_MKL" == "true" ]]; then
