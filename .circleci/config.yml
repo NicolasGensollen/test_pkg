@@ -16,11 +16,12 @@ jobs:
           command: |
             python3 -m venv venv
             . venv/bin/activate
-            pip install -r requirements.txt
+            pip install -r requirements.txit
+            pip install -e .
       # Step 3: run linter and tests
       - run:
           name: run tests
           command: |
             . venv/bin/activate
             #flake8 --exclude=venv* --statistics
-            pytest -v --pyargs test_pkg --cov=test_pkg
+            pytest -v --pyargs toy_pkg --cov=toy_pkg

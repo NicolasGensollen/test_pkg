@@ -39,7 +39,11 @@ echo_requirements_string() {
 }
 
 create_new_travis_env() {
-    REQUIREMENTS=$(echo_requirements_string)
+    echo "inside create_new_travis_env..."
+    REQUIREMENTS="test"
+    echo $REQUIREMENTS
+    REQUIREMENTS=echo_requirements_string
+    echo $REQUIREMENTS
     pip install --upgrade $PIP_FLAGS $(REQUIREMENTS)
     pip install --upgrade pytest pytest-cov
 

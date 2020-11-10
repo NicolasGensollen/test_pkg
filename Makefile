@@ -25,10 +25,10 @@ clean: clean-build clean-pyc clean-so clean-ctags
 in: inplace # just a shortcut
 
 test-code:
-	python -m pytest --pyargs test_pkg --cov=test_pkg
+	python -m pytest --pyargs toy_pkg --cov=toy_pkg
 
 test-coverage:
 	rm -rf coverage .coverage
-	pytest --pyargs test_pkg --showlocals --cov=test_pkg --cov-report=html:coverage
+	pytest --pyargs toy_pkg --showlocals --cov=toy_pkg --cov-report=html:coverage
 
 test: test-code

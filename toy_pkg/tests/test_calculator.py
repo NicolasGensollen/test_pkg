@@ -1,6 +1,6 @@
 """Unit tests for the calculator library."""
 
-from test_pkg import calculator
+from toy_pkg import calculator
 
 
 class TestCalculator:
