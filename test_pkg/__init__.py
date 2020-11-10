@@ -1,5 +1,5 @@
 """
-Test module in python
+Test module in python.
 ---------------------
 
 Documentation is available in the docstrings and online at
