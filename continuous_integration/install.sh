@@ -39,13 +39,7 @@ echo_requirements_string() {
 
 create_new_travis_env() {
     REQUIREMENTS=$(echo_requirements_string)
-    pip install ${REQUIREMENTS}
-    if [[ $MATPLOTLIB_VERSION == "dev" ]]; then
-        echo "Install Development version of Matplotlib."
-        pip install git+https://github.com/matplotlib/matplotlib.git
-    fi
-    #pip install --upgrade $PIP_FLAGS $REQUIREMENTS
-    echo "next..."
+    pip install --upgrade $PIP_FLAGS ${REQUIREMENTS}
     if [[ $MATPLOTLIB_VERSION == "dev" ]]; then
         echo "Install Development version of Matplotlib."
         pip install git+https://github.com/matplotlib/matplotlib.git
