@@ -1,6 +1,6 @@
-"""Unit tests for the calculator library"""
+"""Unit tests for the calculator library."""
 
-import calculator
+from test_pkg import calculator
 
 
 class TestCalculator:
