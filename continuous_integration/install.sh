@@ -34,7 +34,6 @@ echo_requirements_string() {
                 REQUIREMENTS="$REQUIREMENTS $PACKAGE==$PACKAGE_VERSION"
             fi
         fi
-        echo $REQUIREMENTS
     done
     echo $REQUIREMENTS
 }
@@ -45,8 +44,12 @@ create_new_travis_env() {
     echo "left echo_requirements_strings"
     echo $REQUIREMENTS
     echo $PIP_FLAGS
-    pip install --upgrade $PIP_FLAGS ${REQUIREMENTS}
+    pip install --upgrade $PIP_FLAGS $REQUIREMENTS
     echo "next..."
+    if [[ $MATPLOTLIB_VERSION == "dev" ]]; then
+        echo "Install Development version of Matplotlib."
+        pip install git+https://github.com/matplotlib/matplotlib.git
+    fi
     pip install --upgrade pytest pytest-cov
 
     if [[ "$INSTALL_MKL" == "true" ]]; then
