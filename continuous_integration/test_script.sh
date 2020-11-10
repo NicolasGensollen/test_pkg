@@ -6,7 +6,7 @@ if [[ "$SKIP_TESTS" != "true" ]]; then
     python continuous_integration/show-python-packages-versions.py
     # Copy setup.cfg to TEST_RUN_FOLDER where we are going to run the tests from
     # Mainly for test config settings
-    cp setup.cfg "$TEST_RUN_FOLDER"
+    #cp setup.cfg "$TEST_RUN_FOLDER"
     cp .coveragerc "$TEST_RUN_FOLDER"
     # We want to back out of the current working directory to make
     # sure we are using nilearn installed in site-packages rather
