@@ -29,7 +29,7 @@ echo_requirements_string() {
         if [[ -n "$PACKAGE_VERSION" ]]; then
             if [[ "$PACKAGE_VERSION" == "*" ]]; then
                 REQUIREMENTS="$REQUIREMENTS $PACKAGE"
-            else
+            elif [[ "$PACKAGE_VERSION" != "dev" ]]; then
                 REQUIREMENTS="$REQUIREMENTS $PACKAGE==$PACKAGE_VERSION"
             fi
         fi
