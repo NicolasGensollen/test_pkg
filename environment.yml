@@ -1,0 +1,13 @@
+name: toy_pkg
+channels:
+    - conda-forge
+dependencies:
+    - python>=3.8
+    - pip
+    - numpy
+    - scipy
+    - matplotlib
+    - pandas
+    - scikit-learn
+    - jupyter
+    - joblib
