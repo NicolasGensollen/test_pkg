@@ -47,13 +47,13 @@ jobs:
           environment-file: ${{ env.CONDA_ENV }}
         name: 'Setup conda'
       - shell: bash -el {0}
-        run: ./tools/github_actions_dependencies.sh
+        run: sh "bash ./tools/github_actions_dependencies.sh"
         name: 'Install dependencies'
       - shell: bash -el {0}
-        run: ./tools/github_actions_install.sh
+        run: sh "bash ./tools/github_actions_install.sh"
         name: 'Install toy_pkg'
       - shell: bash -el {0}
-        run: ./tools/github_actions_test.sh
+        run: sh "bash ./tools/github_actions_test.sh"
         name: 'Run tests'
       - uses: codecov/codecov-action@v1
         if: success()
