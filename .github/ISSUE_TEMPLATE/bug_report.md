@@ -2,7 +2,7 @@
 name: Bug report
 about: Something not working as described? This is the place.
 title: ''
-labels: 'Bug'
+labels: 'bug'
 assignees: ''
 
 ---
