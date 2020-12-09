@@ -1,8 +1,9 @@
-name: 'linux / conda'
+name: 'linux macos windows with conda'
+
 on:
   push:
     branches:
-      - '*'
+      - "main"
   pull_request:
     branches:
       - '*'
@@ -22,7 +23,6 @@ jobs:
           commit-filter: '[skip ci];[ci skip];[skip github]'
           commit-filter-separator: ';'
 
-  # Linux
   job:
     needs: check_skip
     if: ${{ needs.check_skip.outputs.skip == 'false' }}
@@ -38,7 +38,6 @@ jobs:
         shell: bash
     env:
       CONDA_ENV: environment.yml
-      CONDA_DEPENDENCIES: 'numpy scipy matplotlib'
       CONDA_RC: condarc.yml
     steps:
       - uses: actions/checkout@v2
@@ -55,9 +54,6 @@ jobs:
           conda info
           conda list
           printenv | sort
-      - shell: bash -el {0}
-        run: ./tools/github_actions_dependencies.sh
-        name: 'Install dependencies'
       - shell: bash -el {0}
         run: ./tools/github_actions_install.sh
         name: 'Install toy_pkg'
