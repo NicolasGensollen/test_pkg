@@ -33,7 +33,7 @@ jobs:
         shell: bash
     env:
       CONDA_ENV: environment.yml
-      CONDA_DEPENDENCIES: 'numpy scipy matplotlib pytest'
+      CONDA_DEPENDENCIES: 'numpy scipy matplotlib'
       DISPLAY: ':99.0'
       MNE_LOGGING_LEVEL: 'warning'
       MKL_NUM_THREADS: '1'
