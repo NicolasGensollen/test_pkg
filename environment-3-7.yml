@@ -5,10 +5,10 @@ dependencies:
     - pip
     - numpy
     - scipy
-    - matplotlib
+    - matplotlib==3.3.2
     - pandas
     - scikit-learn
     - jupyter
     - joblib
-    - pytest
+    - pytest==6.1.0
     - pytest-cov
