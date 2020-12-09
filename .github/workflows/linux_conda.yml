@@ -48,7 +48,13 @@ jobs:
           activate-environment: toy_pkg
           python-version: ${{ matrix.python_version }}
           environment-file: ${{ env.CONDA_ENV }}
+          auto-activate-base: false
+          auto-update-conda: true
         name: 'Setup conda'
+      - run: |
+          conda info
+          conda list
+          printenv | sort
       - shell: bash -el {0}
         run: ./tools/github_actions_dependencies.sh
         name: 'Install dependencies'
