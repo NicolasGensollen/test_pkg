@@ -37,17 +37,15 @@ jobs:
     env:
       CONDA_ENV: environment.yml
       CONDA_DEPENDENCIES: 'numpy scipy matplotlib'
-      DISPLAY: ':99.0'
-      MNE_LOGGING_LEVEL: 'warning'
-      MKL_NUM_THREADS: '1'
-      PYTHONUNBUFFERED: '1'
+      CONDA_RC: condarc.yml
     steps:
       - uses: actions/checkout@v2
       - uses: conda-incubator/setup-miniconda@v2
         with:
           activate-environment: toy_pkg
-          python-version: ${{ matrix.python_version }}
+          python-version: 3.5#${{ matrix.python_version }}
           environment-file: ${{ env.CONDA_ENV }}
+          condarc-file: ${{ env.CONDA_RC }}
           auto-activate-base: false
           auto-update-conda: true
         name: 'Setup conda'
