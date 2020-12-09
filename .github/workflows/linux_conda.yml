@@ -9,7 +9,7 @@ on:
 
 jobs:
   check_skip:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     outputs:
       skip: ${{ steps.result_step.outputs.ci-skip }}
     steps:
@@ -26,8 +26,11 @@ jobs:
   job:
     needs: check_skip
     if: ${{ needs.check_skip.outputs.skip == 'false' }}
-    name: 'py3.8'
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
+    strategy:
+        matrix:
+            python-version: [3.5, 3.6, 3.7, 3.8]
+    name: Python ${{ matrix.python-version }}
     defaults:
       run:
         shell: bash
@@ -38,13 +41,12 @@ jobs:
       MNE_LOGGING_LEVEL: 'warning'
       MKL_NUM_THREADS: '1'
       PYTHONUNBUFFERED: '1'
-      PYTHON_VERSION: 3.8
     steps:
       - uses: actions/checkout@v2
       - uses: conda-incubator/setup-miniconda@v2
         with:
           activate-environment: toy_pkg
-          python-version: ${{ env.PYTHON_VERSION }}
+          python-version: ${{ matrix.python_version }}
           environment-file: ${{ env.CONDA_ENV }}
         name: 'Setup conda'
       - shell: bash -el {0}
