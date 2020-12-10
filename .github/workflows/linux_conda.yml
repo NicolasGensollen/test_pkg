@@ -23,29 +23,6 @@ jobs:
           commit-filter: '[skip ci];[ci skip];[skip github]'
           commit-filter-separator: ';'
 
-  example-1:
-    name: Ex1 (${{ matrix.python-version }}, ${{ matrix.os }})
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: ["ubuntu-latest", "macos-latest", "windows-latest"]
-        python-version: ["3.7", "2.7"]
-    steps:
-      - uses: actions/checkout@v2
-      - uses: conda-incubator/setup-miniconda@v2
-        with:
-          activate-environment: toy_pkg
-          auto-update-conda: true
-          python-version: ${{ matrix.python-version }}
-          environment-file: environment.yml
-      - name: Conda info
-        shell: bash -l {0}
-        run: conda info
-      - name: Conda list
-        shell: pwsh
-        run: conda list
-
   min_requirements:
     needs: check_skip
     if: ${{ needs.check_skip.outputs.skip == 'false' }}
@@ -91,19 +68,15 @@ jobs:
     defaults:
       run:
         shell: bash
-    env:
-      CONDA_ENV: environment.yml
-      CONDA_RC: condarc.yml
     steps:
       - uses: actions/checkout@v2
       - uses: conda-incubator/setup-miniconda@v2
         with:
           activate-environment: toy_pkg
-          python-version: ${{ matrix.python-version }}
-          environment-file: ${{ env.CONDA_ENV }}
-          condarc-file: ${{ env.CONDA_RC }}
           auto-activate-base: false
           auto-update-conda: true
+          python-version: ${{ matrix.python-version }}
+          environment-file: environment.yml
         name: 'Setup conda'
       - run: |
           conda info
