@@ -88,11 +88,11 @@ jobs:
         run: ./tools/github_actions_install.sh
         name: 'Install toy_pkg'
       - shell: bash -l {0}
-        run: |
-            pwd
-            ls -l
-            ./toy_pkg/tools/github_actions_test.sh
-        working-directory: ./tests
+        run: mkdir ../test_dir
+        name: 'Create test directory'
+      - shell: bash -l {0}
+        run: ../toy_pkg/tools/github_actions_test.sh
+        working-directory: ../test_dir
         name: 'Run tests'
       - uses: codecov/codecov-action@v1
         if: success()
