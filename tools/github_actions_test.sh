@@ -1,4 +1,4 @@
-#!/bin/bash -ef
+#!/bin/bash -x
 
-echo 'python -m pytest --pyargs toy_pkg --cov=toy_pkg'
+pwd
 python -m pytest --pyargs toy_pkg --cov=toy_pkg
