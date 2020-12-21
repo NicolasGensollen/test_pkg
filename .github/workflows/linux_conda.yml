@@ -48,12 +48,42 @@ jobs:
         run: ./tools/github_actions_install.sh
         name: 'Install toy_pkg'
       - shell: bash -l {0}
-        working-directory: ./tests
-        run: ./toy_pkg/tools/github_actions_test.sh
+        run: ./tools/github_actions_test.sh
         name: 'Run tests'
       - uses: codecov/codecov-action@v1
         if: success()
         name: 'Upload coverage to CodeCov'
+
+  dev-package-versions:
+    needs: check_skip
+    if: ${{ needs.check_skip.outputs.skip == 'false' }}
+    runs-on: "ubuntu-latest"
+    name: Ubuntu latest with matplotlib dev
+    defaults:
+      run:
+        shell: bash
+    env:
+      DEV_VERSION: true
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+        name: 'Setup python'
+      - shell: bash -l {0}
+        run: ./tools/github_actions_dependencies.sh
+        name: 'Install dependencies'
+      - shell: bash -l {0}
+        run: ./tools/github_actions_install.sh
+        name: 'Install toy_pkg'
+      - shell: bash -l {0}
+        run: ./tools/github_actions_test.sh
+        continue-on-error: true
+        name: 'Run tests'
+      - uses: codecov/codecov-action@v1
+        if: success()
+        name: 'Upload coverage to CodeCov'
+      
 
   latest:
     needs: check_skip
@@ -88,21 +118,7 @@ jobs:
         run: ./tools/github_actions_install.sh
         name: 'Install toy_pkg'
       - shell: bash -l {0}
-        run: |
-            cd ../..
-            mkdir test_dir
-            ls -l
-            pwd
-        name: 'Create test directory'
-      - shell: bash -l {0}
-        working-directory: ../../test_dir
-        run: |
-            ls -l
-            pwd
-            ls -l ..
-      - shell: bash -l {0}
-        run: ../toy_pkg/tools/github_actions_test.sh
-        working-directory: ../../test_dir
+        run: ./tools/github_actions_test.sh
         name: 'Run tests'
       - uses: codecov/codecov-action@v1
         if: success()
