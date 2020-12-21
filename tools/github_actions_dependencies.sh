@@ -1,4 +1,4 @@
-#!/bin/bash -ef
+#!/bin/bash -e
 
 if [ ! -z "$CONDA_ENV" ]; then
 	pip uninstall -yq toy_pkg
