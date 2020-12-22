@@ -1,0 +1,43 @@
+name: 'test'
+
+on:
+  push:
+    branches:
+      - "main"
+  pull_request:
+    branches:
+      - '*'
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        python-version: ["3.7"]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+      - shell: bash -l {0}
+        name: 'Display Python version and location'
+        run: |
+            python --version
+            which python
+     
+  mac-only:
+      runs-on: "macos-latest"
+      steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.7
+      - shell: bash -l {0}
+        name: 'Display Python version and location'
+        run: |
+            python --version
+            which python
+
