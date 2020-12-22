@@ -67,9 +67,15 @@ jobs:
       run:
         shell: bash
     env:
-      AGENT_TOOLSDIRECTORY: /Users/runner/hostedtoolcache/
+      AGENT_TOOLSDIRECTORY: /usr/runner/hostedtoolcache/
       DEV_VERSION: true
     steps:
+      - shell: bash -l {0}
+        run: |
+            ls -l
+            mkdir /usr/runner/hostedtoolcache
+            sudo chown runner-user:runner-group /usr/runner/hostedtoolcache/
+        name: 'Configure hostedtoolcache'
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
         with:
@@ -79,7 +85,9 @@ jobs:
         name: 'Display Python version'
         run: python -c "import sys; print(sys.version)"
       - shell: bash -l {0}
-        run: which python
+        run: |
+            which python
+            pwd
         name: 'which python'
       - shell: bash -l {0}
         run: ./tools/github_actions_dependencies.sh
