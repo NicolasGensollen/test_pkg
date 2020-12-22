@@ -61,7 +61,7 @@ jobs:
         name: 'Upload coverage to CodeCov'
 
   dev-package-versions:
-    runs-on: "macos-latest"
+    runs-on: "macos-11.0"
     name: MacOS latest with matplotlib dev
     defaults:
       run:
