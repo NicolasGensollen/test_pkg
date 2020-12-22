@@ -35,6 +35,8 @@ jobs:
     defaults:
       run:
         shell: bash
+    env:
+      AGENT_TOOLSDIRECTORY: /Users/runner/hostedtoolcache/
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
@@ -45,8 +47,11 @@ jobs:
         name: 'Display Python version'
         run: python -c "import sys; print(sys.version)"
       - shell: bash -l {0}
-        run: which python
-        name: 'which python'
+        run: |
+            which python
+            which pip
+            python --version
+        name: 'which python and pip'
       - shell: bash -l {0}
         run: ./tools/github_actions_dependencies.sh
         name: 'Install dependencies'
@@ -87,6 +92,7 @@ jobs:
         run: |
             which python
             which python3
+            which pip
             pwd
         name: 'which python'
       - shell: bash -l {0}
