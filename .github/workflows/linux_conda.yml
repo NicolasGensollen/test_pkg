@@ -72,12 +72,8 @@ jobs:
     steps:
       - shell: bash -l {0}
         run: |
-            ls -l /Users/runner/hostedtoolcache
+            ls -l /Users/runner/hostedtoolcache/Python
         name: 'Configure hostedtoolcache'
-      - shell: bash -l {0}
-        run: |
-            sudo chown runner-user:runner-group /Users/runner/hostedtoolcache/
-        name: 'Change permissions'
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
         with:
