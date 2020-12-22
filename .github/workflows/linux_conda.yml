@@ -67,15 +67,17 @@ jobs:
       run:
         shell: bash
     env:
-      AGENT_TOOLSDIRECTORY: /usr/runner/hostedtoolcache/
+      AGENT_TOOLSDIRECTORY: /Users/runner/hostedtoolcache/
       DEV_VERSION: true
     steps:
       - shell: bash -l {0}
         run: |
-            ls -l
-            mkdir /usr/runner/hostedtoolcache
-            sudo chown runner-user:runner-group /usr/runner/hostedtoolcache/
+            ls -l /Users/runner/hostedtoolcache
         name: 'Configure hostedtoolcache'
+      - shell: bash -l {0}
+        run: |
+            sudo chown runner-user:runner-group /Users/runner/hostedtoolcache/
+        name: 'Change permissions'
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
         with:
