@@ -1,6 +1,6 @@
 #!/bin/bash -x
 
-pip install --progress-bar off --upgrade pip setuptools wheel
+python -m pip install --progress-bar off --upgrade pip setuptools wheel
 pip install --progress-bar off --upgrade --pre --only-binary ":all:" joblib numpy scipy pandas scikit-learn matplotlib lxml pytest pytest-cov coverage
 
 if [ ! -z "$DEV_VERSION" ]; then

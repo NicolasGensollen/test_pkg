@@ -73,6 +73,7 @@ jobs:
       - shell: bash -l {0}
         run: |
             ls -l /Users/runner/hostedtoolcache/Python
+            chmod +w /Users/runner/hostedtoolcache/
         name: 'Configure hostedtoolcache'
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
