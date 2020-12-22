@@ -58,10 +58,8 @@ jobs:
         name: 'Upload coverage to CodeCov'
 
   dev-package-versions:
-    needs: check_skip
-    if: ${{ needs.check_skip.outputs.skip == 'false' }}
     runs-on: "macos-latest"
-    name: Ubuntu latest with matplotlib dev
+    name: MacOS latest with matplotlib dev
     defaults:
       run:
         shell: bash
@@ -76,6 +74,9 @@ jobs:
       - shell: bash -l {0}
         name: 'Display Python version'
         run: python -c "import sys; print(sys.version)"
+      - shell: bash -l {0}
+        run: which python
+        name: 'which python'
       - shell: bash -l {0}
         run: ./tools/github_actions_dependencies.sh
         name: 'Install dependencies'
