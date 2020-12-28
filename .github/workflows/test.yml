@@ -25,16 +25,9 @@ jobs:
         name: 'Display Python version'
         run: python --version
       - shell: bash {0}
-        run: ln -s ${{ env.pythonLocation }} python
-        name: 'ugly'
-      - shell: bash {0}
-        name: 'Display Python version2'
-        run: python --version
-      - shell: bash {0}
         name: 'which python'
         run: |
             which python
-            which pip
       - shell: bash {0}
         run: ./tools/github_actions_dependencies.sh
         name: 'Install dependencies'
