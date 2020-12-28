@@ -134,21 +134,21 @@ jobs:
           environment-file: environment.yml
         name: 'Setup conda'
       - name: Conda info
-        shell: bash {0}
+        shell: bash -l {0}
         run: conda info
       - name: Conda list
         shell: pwsh
         run: conda list
-      - shell: bash {0}
+      - shell: bash -l {0}
         name: 'Display Python version'
         run: python -c "import sys; print(sys.version)"
-      - shell: bash {0}
+      - shell: bash -l {0}
         run: which python
         name: 'which python'
-      - shell: bash {0}
+      - shell: bash -l {0}
         run: ./tools/github_actions_install.sh
         name: 'Install toy_pkg'
-      - shell: bash {0}
+      - shell: bash -l {0}
         run: ./tools/github_actions_test.sh
         name: 'Run tests'
       - uses: codecov/codecov-action@v1
