@@ -21,7 +21,7 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
-      - shell: bash -l {0}
+      - shell: bash {0}
         name: 'Display Python version and location'
         run: |
             python --version
@@ -35,7 +35,7 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: 3.7
-      - shell: bash -l {0}
+      - shell: bash {0}
         name: 'Display Python version and location'
         run: |
             python --version

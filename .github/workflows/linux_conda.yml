@@ -43,22 +43,22 @@ jobs:
         with:
           python-version: 3.5
         name: 'Setup python'
-      - shell: bash -l {0}
+      - shell: bash {0}
         name: 'Display Python version'
         run: python -c "import sys; print(sys.version)"
-      - shell: bash -l {0}
+      - shell: bash {0}
         run: |
             which python
             which pip
             python --version
         name: 'which python and pip'
-      - shell: bash -l {0}
+      - shell: bash {0}
         run: ./tools/github_actions_dependencies.sh
         name: 'Install dependencies'
-      - shell: bash -l {0}
+      - shell: bash {0}
         run: ./tools/github_actions_install.sh
         name: 'Install toy_pkg'
-      - shell: bash -l {0}
+      - shell: bash {0}
         run: ./tools/github_actions_test.sh
         name: 'Run tests'
       - uses: codecov/codecov-action@v1
@@ -75,7 +75,7 @@ jobs:
       AGENT_TOOLSDIRECTORY: /Users/runner/hostedtoolcache/
       DEV_VERSION: true
     steps:
-      - shell: bash -l {0}
+      - shell: bash {0}
         run: |
             ls -l /Users/runner/hostedtoolcache/Python
             chmod +w /Users/runner/hostedtoolcache/
@@ -85,23 +85,23 @@ jobs:
         with:
           python-version: 3.7
         name: 'Setup python'
-      - shell: bash -l {0}
+      - shell: bash {0}
         name: 'Display Python version'
         run: python -c "import sys; print(sys.version)"
-      - shell: bash -l {0}
+      - shell: bash {0}
         run: |
             which python
             which python3
             which pip
             pwd
         name: 'which python'
-      - shell: bash -l {0}
+      - shell: bash {0}
         run: ./tools/github_actions_dependencies.sh
         name: 'Install dependencies'
-      - shell: bash -l {0}
+      - shell: bash {0}
         run: ./tools/github_actions_install.sh
         name: 'Install toy_pkg'
-      - shell: bash -l {0}
+      - shell: bash {0}
         run: ./tools/github_actions_test.sh
         continue-on-error: true
         name: 'Run tests'
@@ -134,21 +134,21 @@ jobs:
           environment-file: environment.yml
         name: 'Setup conda'
       - name: Conda info
-        shell: bash -l {0}
+        shell: bash {0}
         run: conda info
       - name: Conda list
         shell: pwsh
         run: conda list
-      - shell: bash -l {0}
+      - shell: bash {0}
         name: 'Display Python version'
         run: python -c "import sys; print(sys.version)"
-      - shell: bash -l {0}
+      - shell: bash {0}
         run: which python
         name: 'which python'
-      - shell: bash -l {0}
+      - shell: bash {0}
         run: ./tools/github_actions_install.sh
         name: 'Install toy_pkg'
-      - shell: bash -l {0}
+      - shell: bash {0}
         run: ./tools/github_actions_test.sh
         name: 'Run tests'
       - uses: codecov/codecov-action@v1
