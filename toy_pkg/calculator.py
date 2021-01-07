@@ -14,3 +14,7 @@ def subtract(first_term, second_term):
 def multiply(first_term, second_term):
     """Multiply first term by second term."""
     return first_term * second_term
+
+def divide(first_term, second_term):
+    """Divide first term by second term."""
+    return first_term / second_term
