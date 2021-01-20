@@ -1,13 +1,14 @@
 	.. -*- mode: rst -*-
 
-.. image:: https://travis-ci.org/NicolasGensollen/toy_pkg.svg?branch=master
+.. image:: https://travis-ci.org/NicolasGensollen/toy_pkg.svg?branch=main
    :target: https://travis-ci.org/NicolasGensollen/toy_pkg
    :alt: Travis Build Status
 
-.. image:: https://codecov.io/gh/NicolasGensollen/toy_pkg/branch/master/graph/badge.svg
+.. image:: https://codecov.io/gh/NicolasGensollen/toy_pkg/branch/main/graph/badge.svg
    :target: https://codecov.io/gh/NicolasGensollen/toy_pkg
+   :alt: Code coverage
 
-.. image:: https://github.com/nicolasgensollen/toy_pkg/workflows/test/badge.svg?branch=master&event=push
+.. image:: https://github.com/nicolasgensollen/toy_pkg/workflows/test/badge.svg?branch=main&event=push
    :target: https://github.com/NicolasGensollen/toy_pkg/actions
    :alt: Github Actions Build Status
 
