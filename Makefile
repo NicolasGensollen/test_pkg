@@ -24,6 +24,9 @@ clean: clean-build clean-pyc clean-so clean-ctags
 
 in: inplace # just a shortcut
 
+test-doc:
+	pytest --doctest-glob='*.rst' `find doc/ -name '*.rst'`
+
 test-code:
 	python -m pytest --pyargs toy_pkg --cov=toy_pkg
 
