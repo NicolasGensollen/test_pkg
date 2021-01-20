@@ -25,6 +25,13 @@ def add(first_term, second_term):
     0
     >>> add(0, 0)
     0
+
+    See Also
+    --------
+    subtract : Subtraction
+    multiply : Multiplication
+    divide : Division
+
     """
     result = first_term + second_term
     return result
@@ -46,6 +53,12 @@ def subtract(first_term, second_term):
     result : Number
         Result of the subtraction.
 
+    See Also
+    --------
+    subtract : Subtraction
+    multiply : Multiplication
+    divide : Division
+
     Examples
     --------
     >>> subtract(1, 1)
@@ -54,6 +67,7 @@ def subtract(first_term, second_term):
     2
     >>> subtract(0, 0)
     0
+
     """
     result = first_term - second_term
     return result
@@ -75,6 +89,12 @@ def multiply(first_term, second_term):
     result : Number
         Result of the multiplication.
 
+    See Also
+    --------
+    add : Addition
+    subtract : Subtraction
+    divide : Division
+
     Examples
     --------
     >>> multiply(1, 1)
@@ -83,6 +103,7 @@ def multiply(first_term, second_term):
     -1
     >>> multiply(0, 0)
     0
+
     """
     result = first_term * second_term
     return result
@@ -102,6 +123,17 @@ def divide(first_term, second_term):
     -------
     result : Number
         Result of the division.
+
+    Raises
+    ------
+    ZeroDivisionError
+        If second term is equal to zero.
+
+    See Also
+    --------
+    add : Addition
+    subtract : Subtraction
+    multiply : Multiplication
 
     Examples
     --------

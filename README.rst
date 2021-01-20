@@ -16,6 +16,10 @@
    :target: https://github.com/NicolasGensollen/toy_pkg/actions?query=workflow%3A%22linux+macos+with+conda%22
    :alt: Github Actions Build Status
 
+.. image:: https://readthedocs.org/projects/toy-pkg/badge/?version=latest
+   :target: https://toy-pkg.readthedocs.io/en/latest/?badge=latest
+   :alt: Documentation Status
+
 Toy Package
 ===========
 
