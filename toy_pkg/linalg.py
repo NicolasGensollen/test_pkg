@@ -65,3 +65,66 @@ def outer(A, B):
     """
     result = np.outer(A, B)
     return result
+
+
+def inner(A, B):
+    """Inner product of matrix A with matrix B.
+
+    Parameters
+    ----------
+    A : ndarray
+        First matrix of the inner product.
+
+    B : ndarray
+        Second matrix of the inner product.
+
+    Returns
+    -------
+    result : ndarray
+        Result of the inner product.
+
+    Examples
+    --------
+    >>> inner(np.array([1,2,3]), np.array([0,1,0]))
+    2
+
+    See Also
+    --------
+
+    """
+    if(not isinstance(A, np.ndarray) or
+       not isinstance(B, np.ndarray)):
+        raise TypeError("Inner function expects numpy arrays as inputs.")
+    result = np.inner(A, B)
+    return result
+
+
+def power(A, p):
+    """Raise a square matrix A to the power p.
+
+    Parameters
+    ----------
+    A : ndarray
+        Square matrix to be elevated.
+
+    p : int
+        Exponent.
+
+    Returns
+    -------
+    result : ndarray
+        Matrix A to the power p.
+
+    Examples
+    --------
+    >>> i = np.array([[0, 1], [-1, 0]])
+    >>> power(i, 3)
+    array([[ 0, -1],
+           [ 1,  0]])
+
+    See Also
+    --------
+
+    """
+    result = np.power(A, p)
+    return result
