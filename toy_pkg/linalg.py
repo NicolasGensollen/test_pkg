@@ -49,7 +49,6 @@ def outer(A, B):
     Returns
     -------
     result : ndarray
-<<<<<<< HEAD
         Result of the outer product.
 
     Examples
