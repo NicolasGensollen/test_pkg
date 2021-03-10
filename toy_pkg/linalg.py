@@ -49,6 +49,7 @@ def outer(A, B):
     Returns
     -------
     result : ndarray
+<<<<<<< HEAD
         Result of the outer product.
 
     Examples
@@ -64,4 +65,36 @@ def outer(A, B):
 
     """
     result = np.outer(A, B)
+    return result
+
+
+def inner(A, B):
+    """Inner product of matrix A with matrix B.
+
+    Parameters
+    ----------
+    A : ndarray
+        First matrix of the inner product.
+
+    B : ndarray
+        Second matrix of the inner product.
+
+    Returns
+    -------
+    result : ndarray
+        Result of the inner product.
+
+    Examples
+    --------
+    >>> inner(np.array([1,2,3]), np.array([0,1,0]))
+    2
+
+    See Also
+    --------
+
+    """
+    if(not isinstance(A, np.ndarray) or
+       not isinstance(B, np.ndarray)):
+        raise TypeError("Inner function expects numpy arrays as inputs.")
+    result = np.inner(A, B)
     return result
