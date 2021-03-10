@@ -98,3 +98,34 @@ def inner(A, B):
         raise TypeError("Inner function expects numpy arrays as inputs.")
     result = np.inner(A, B)
     return result
+
+
+def power(A, p):
+    """Raise a square matrix A to the power p.
+
+    Parameters
+    ----------
+    A : ndarray
+        Square matrix to be elevated.
+
+    p : int
+        Exponent.
+
+    Returns
+    -------
+    result : ndarray
+        Matrix A to the power p.
+
+    Examples
+    --------
+    >>> i = np.array([[0, 1], [-1, 0]])
+    >>> power(i, 3)
+    array([[ 0, -1],
+           [ 1,  0]])
+
+    See Also
+    --------
+
+    """
+    result = np.power(A, p)
+    return result
