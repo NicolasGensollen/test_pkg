@@ -34,3 +34,34 @@ def dot(A, B):
     result = np.dot(A, B)
     return result
 
+
+def outer(A, B):
+    """Outer product of vector A with vector B.
+
+    Parameters
+    ----------
+    A : ndarray
+        First vector of the outer product.
+
+    B : ndarray
+        Second vector of the outer product.
+
+    Returns
+    -------
+    result : ndarray
+        Result of the outer product.
+
+    Examples
+    --------
+    >>> x = np.array(['a', 'b', 'c'], dtype=object)
+    >>> outer(x, [1, 2, 3])
+    array([['a', 'aa', 'aaa'],
+           ['b', 'bb', 'bbb'],
+           ['c', 'cc', 'ccc']], dtype=object)
+
+    See Also
+    --------
+
+    """
+    result = np.outer(A, B)
+    return result
