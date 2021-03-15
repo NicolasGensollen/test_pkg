@@ -14,5 +14,5 @@ if [[ "$SKIP_TESTS" != "true" ]]; then
     # Parentheses (run in a subshell) are used to leave
     # the current directory unchanged
     (cd "$TEST_RUN_FOLDER" && make -f $OLDPWD/Makefile test-code)
-    test "$MATPLOTLIB_VERSION" == "" || make test-doc
+    #test "$MATPLOTLIB_VERSION" == "" || make test-doc
 fi
