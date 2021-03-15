@@ -117,10 +117,6 @@ def power(A, p):
 
     Examples
     --------
-    >>> i = np.array([[0, 1], [-1, 0]])
-    >>> power(i, 3)
-    array([[ 0, 1],
-           [-1, 0]])
 
     See Also
     --------
