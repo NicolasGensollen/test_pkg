@@ -45,17 +45,17 @@ jobs:
                     cd doc;
                     make html
             - store_artifacts:
-                path: doc/_build/test-results
+                path: doc/build/test-results
                 destination: test-results
             # Save the HTML
             - store_artifacts:
-                path: doc/_build/html/
+                path: doc/build/html/
                 destination: dev
             - store_artifacts:
-                path: doc/_build/html_stable/
+                path: doc/build/html_stable/
                 destination: stable
             - persist_to_workspace:
-                root: doc/_build
+                root: doc/build
                 paths:
                   - html
                   - html_stable
