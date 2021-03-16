@@ -25,6 +25,11 @@ Toy Package
 
 This is a simple and useless example package to test various CI stuffs.
 
+Install
+-------
+
+TODO: add install steps here.
+
 Authors
 -------
 
