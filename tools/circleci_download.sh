@@ -18,7 +18,7 @@ else
         PATTERN="\(${PATTERN::-2}\)";
         echo html_dev-pattern > build.txt;
     else
-        echo html_dev-noplot > build.txt;
+        echo html > build.txt;
     fi;
 fi;
 echo "$PATTERN" > pattern.txt;
