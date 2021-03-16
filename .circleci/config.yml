@@ -21,6 +21,15 @@ jobs:
                 key: source-cache
                 paths:
                     - ".git"
+            - run:
+                name: Merge with upstream
+                command: |
+                    echo $(git log -1 --pretty=%B) | tee gitlog.txt
+                    echo ${CI_PULL_REQUEST//*pull\//} | tee merge.txt
+                    if [[ $(cat merge.txt) != "" ]]; then
+                        echo "Merging $(cat merge.txt)";
+                        git pull --ff-only upstream "refs/pull/$(cat merge.txt)/merge";
+                    fi
             # Load pip cache
             - restore_cache:
                 keys:
