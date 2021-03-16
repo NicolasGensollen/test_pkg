@@ -38,12 +38,21 @@ jobs:
                 paths:
                   - ~/.local/lib/python3.8/site-packages
                   - ~/.local/bin
+            - run:
+                name: Get data
+                command: |
+                    ./tools/circleci_download.sh
+            - run:
+                name: Verify build type
+                command: |
+                    echo "PATTERN=$(cat pattern.txt)"
+                    echo "BUILD=$(cat build.txt)"
             # Build docs
             - run:
                 name: make html
                 command: |
                     cd doc;
-                    make html
+                    PATTERN=$(cat ../pattern.txt) make $(cat ../build.txt);
             - store_artifacts:
                 path: doc/build/test-results
                 destination: test-results

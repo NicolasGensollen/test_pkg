@@ -19,6 +19,11 @@ help:
 %: Makefile
 	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
+html_dev-pattern:
+	$(SPHINXBUILD) -D sphinx_gallery_conf.filename_pattern=$(PATTERN) -D sphinx_gallery_conf.run_stale_examples=True -b html $(SOURCEDIR) $(BUILDDIR) $(SPHINXOPTS)
+	@echo
+	@echo "Build finished. The HTML pages are in build/html"
+
 clean:
 	-rm -rf $(BUILDDIR)/*
 	-rm -rf $(SOURCEDIR)/auto_examples/
