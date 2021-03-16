@@ -1,0 +1,17 @@
+numpy
+cython
+scipy
+flake8
+lxml
+mkl
+sphinx
+sphinx-gallery
+numpydoc
+coverage
+pillow
+pandas
+nibabel
+scikit-learn
+joblib
+matplotlib
+pydata-sphinx-theme==0.5.0
