@@ -17,8 +17,13 @@ from toy_pkg.calculator import add, subtract
 # toy_pkg to run some calculations
 # and check the results...
 result = add(1, 1)
-assert result == 2
+print(result)
+
 result = subtract(1, 3)
-assert result == -2
+print(result)
+
+#####################################
+# Run more computations
+print(subtract(100, 90))
 
 

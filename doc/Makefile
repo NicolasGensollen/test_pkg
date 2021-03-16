@@ -5,8 +5,10 @@
 # from the environment for the first two.
 SPHINXOPTS    ?=
 SPHINXBUILD   ?= sphinx-build
-SOURCEDIR     = source
-BUILDDIR      = build
+SOURCEDIR      = source
+BUILDDIR       = build
+BUILDDIRDEV    = build/html
+BUILDDIRSTABLE = build/html_stable
 
 # Put it first so that "make" without argument is like "make help".
 help:
@@ -17,10 +19,10 @@ help:
 # Catch-all target: route all unknown targets to Sphinx using the new
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
 %: Makefile
-	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
+	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIRDEV)" $(SPHINXOPTS) $(O)
 
 html_dev-pattern:
-	$(SPHINXBUILD) -D sphinx_gallery_conf.filename_pattern=$(PATTERN) -D sphinx_gallery_conf.run_stale_examples=True -b html $(SOURCEDIR) $(BUILDDIR) $(SPHINXOPTS)
+	$(SPHINXBUILD) -D sphinx_gallery_conf.filename_pattern=$(PATTERN) -D sphinx_gallery_conf.run_stale_examples=True -b html $(SOURCEDIR) $(BUILDDIRDEV) $(SPHINXOPTS)
 	@echo
 	@echo "Build finished. The HTML pages are in build/html"
 
