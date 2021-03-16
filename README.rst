@@ -24,3 +24,8 @@ Toy Package
 ===========
 
 This is a simple and useless example package to test various CI stuffs.
+
+Authors
+-------
+
+Nicolas Gensollen. *nicolas.gensollen@gmail.com*
