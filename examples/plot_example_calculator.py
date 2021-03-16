@@ -26,4 +26,8 @@ print(result)
 # Run more computations
 print(subtract(100, 90))
 
+#####################################
+# Still more
+print(add(2, 2))
+
 
