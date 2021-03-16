@@ -1,27 +1,68 @@
 # Python CircleCI 2.0 configuration file
 version: 2
 jobs:
-  build:
-    docker:
-      - image: circleci/python:3.7
+    build_docs:
+        docker:
+            - image: circleci/python:3.8.5-buster
 
-    working_directory: ~/repo
+        steps:
+            - restore_cache:
+                keys:
+                    - source-cache
+            - checkout
+            - run:
+                name: Complete checkout
+                command: |
+                    if ! git remote -v | grep upstream; then
+                        git remote add upstream git://github.com/NicolasGensollen/toy_pkg.git
+                    fi
+                    git fetch upstream
+            - save_cache:
+                key: source-cache
+                paths:
+                    - ".git"
+            # Load pip cache
+            - restore_cache:
+                keys:
+                  - pip-cache
+            - run:
+                name: Get Python running
+                command: |
+                  ./tools/circleci_dependencies.sh
+            - save_cache:
+                key: pip-cache
+                paths:
+                  - ~/.cache/pip
+            - save_cache:
+                key: user-install-bin-cache
+                paths:
+                  - ~/.local/lib/python3.8/site-packages
+                  - ~/.local/bin
+            # Build docs
+            - run:
+                name: make html
+                command: |
+                    cd doc;
+                    make html
+            - store_artifacts:
+                path: doc/_build/test-results
+                destination: test-results
+            # Save the HTML
+            - store_artifacts:
+                path: doc/_build/html/
+                destination: dev
+            - store_artifacts:
+                path: doc/_build/html_stable/
+                destination: stable
+            - persist_to_workspace:
+                root: doc/_build
+                paths:
+                  - html
+                  - html_stable
 
-    steps:
-      # Step 1: obtain repo from GitHub
-      - checkout
-      # Step 2: create virtual env and install dependencies
-      - run:
-          name: install dependencies
-          command: |
-            python3 -m venv venv
-            . venv/bin/activate
-            pip install -r requirements.txt
-            pip install -e .
-      # Step 3: run linter and tests
-      - run:
-          name: run tests
-          command: |
-            . venv/bin/activate
-            #flake8 --exclude=venv* --statistics
-            pytest -v --pyargs toy_pkg --cov=toy_pkg
+workflows:
+    version: 2
+
+    default:
+        jobs:
+            - build_docs
