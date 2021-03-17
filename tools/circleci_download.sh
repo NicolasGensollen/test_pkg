@@ -8,7 +8,7 @@ else
     FNAMES=$(git diff --name-only $(git merge-base $CIRCLE_BRANCH upstream/main) $CIRCLE_BRANCH);
     echo FNAMES="$FNAMES";
     for FNAME in $FNAMES; do
-        if [[ `expr match $FNAME "examples/.*plot_.*\.py"` ]] ; then
+        if [[ `expr match $FNAME "\(examples\)/.*plot_.*\.py"` ]] ; then
             echo "Checking example $FNAME ...";
             PATTERN=`basename $FNAME`"\\|"$PATTERN;
         fi;
