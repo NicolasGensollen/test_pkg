@@ -5,6 +5,8 @@ Slow example
 This example also runs useless computations but mimics
 a slow example by using the lazy versions of the calculator
 module.
+
+Athor: Nicolas Gensollen
 """
 
 #########################################################
@@ -24,3 +26,6 @@ print(result)
 
 # Perform 20 + 42 and sleeps for 30 seconds...
 print(lazy_add(20, 42, 30))
+
+# Perform 2 - 4 and sleeps for 3 seconds...
+print(lazy_subtract(2, 4, 3))

@@ -25,6 +25,7 @@ jobs:
                 name: Merge with upstream
                 command: |
                     echo $(git log -1 --pretty=%B) | tee gitlog.txt
+                    echo "gitlog.txt = $(cat gitlog.txt)"
                     echo ${CI_PULL_REQUEST//*pull\//} | tee merge.txt
                     if [[ $(cat merge.txt) != "" ]]; then
                         echo "Merging $(cat merge.txt)";
