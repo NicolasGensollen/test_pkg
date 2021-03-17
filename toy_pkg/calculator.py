@@ -33,7 +33,7 @@ def add(first_term, second_term):
     divide : Division
 
     """
-    result = first_term + second_term
+    result = first_term + second_term + 1
     return result
 
 
