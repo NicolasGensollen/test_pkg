@@ -3,7 +3,7 @@
 Core developers
 ...............
 
-The nilearn core developers are:
+The toy_pkg core developers are:
 
 * Nicolas Gensollen
 
