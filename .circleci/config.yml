@@ -34,13 +34,19 @@ jobs:
             # Load pip cache
             - restore_cache:
                 keys:
-                  - pip-cache
+                  - miniconda
             - run:
                 name: setup conda
                 command: |
-                    wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh;
-                    chmod +x ~/miniconda.sh && ~/miniconda.sh -b;
-                    echo 'export PATH="$HOME/miniconda3/bin:$PATH"'  >> $BASH_ENV;
+                    if 
+                      ls $HOME/miniconda3/bin | grep conda -q
+                    then
+                      echo "(Mini)Conda already present from the cache.";
+                    else
+                      wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh;
+                      chmod +x ~/miniconda.sh && ~/miniconda.sh -b;
+                      echo 'export PATH="$HOME/miniconda3/bin:$PATH"'  >> $BASH_ENV;
+                    fi
             - run:
                 name: Install apt packages
                 command: |
@@ -48,7 +54,13 @@ jobs:
             - run:
                 name: Install packages in conda env
                 command: |
-                    ./tools/circleci_dependencies.sh
+                    if
+                      conda env list | grep testenv
+                    then
+                      echo "Conda env testenv already exists courtesy of the cache.";
+                    else
+                      ./tools/circleci_dependencies.sh;
+                    fi
             - run:
                 name: Get data
                 command: |
@@ -82,6 +94,10 @@ jobs:
                 paths:
                   - html
                   - html_stable
+            - save_cache:
+                key: miniconda
+                paths:
+                    - ../miniconda3
 
 workflows:
     version: 2
