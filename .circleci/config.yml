@@ -41,16 +41,20 @@ jobs:
                     wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh;
                     chmod +x ~/miniconda.sh && ~/miniconda.sh -b;
                     echo 'export PATH="$HOME/miniconda3/bin:$PATH"'  >> $BASH_ENV;
+            - run: 
+                name: Initialize conda env
+                command: |
+                    conda init bash;
                     echo "conda version=$(conda --version)";
-            - run: conda create -n testenv
+                    conda create -n testenv;
             - run:
                 name: Install packages in conda env
                 command: |
-                    conda init bash;
                     conda install -n testenv python=3.8 numpy lxml mkl sphinx numpydoc pillow -yq;
                     conda install -n testenv sphinx-gallery junit-xml -c conda-forge -yq;
                     source activate testenv;
                     pip install -e .;
+                    echo "Conda active env = $CONDA_DEFAULT_ENV";
             - run:
                 name: Get data
                 command: |
