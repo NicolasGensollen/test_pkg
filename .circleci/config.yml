@@ -54,6 +54,7 @@ jobs:
                     conda install -n testenv sphinx-gallery junit-xml -c conda-forge -yq;
                     source activate testenv;
                     pip install -e .;
+                    pip install pydata-sphinx-theme;
                     echo "Conda active env = $CONDA_DEFAULT_ENV";
             - run:
                 name: Get data
@@ -68,6 +69,8 @@ jobs:
             - run:
                 name: make html
                 command: |
+                    source activate testenv;
+                    echo "Conda active env = $CONDA_DEFAULT_ENV";
                     cd doc;
                     PATTERN=$(cat ../pattern.txt) make $(cat ../build.txt);
             - store_artifacts:
