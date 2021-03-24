@@ -1,7 +1,5 @@
 #!/bin/bash -ef
 
-sudo -E apt-get -yq update
-sudo -E apt-get -yq --no-install-suggests --no-install-recommends --allow-unauthenticated --allow-downgrades --allow-remove-essential --allow-change-held-packages install dvipng
 conda init bash
 echo "conda version = $(conda --version)"
 conda create -n testenv
