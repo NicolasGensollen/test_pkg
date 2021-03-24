@@ -41,22 +41,10 @@ jobs:
                     wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh;
                     chmod +x ~/miniconda.sh && ~/miniconda.sh -b;
                     echo 'export PATH="$HOME/miniconda3/bin:$PATH"'  >> $BASH_ENV;
-            - run: 
-                name: Initialize conda env
-                command: |
-                    conda init bash;
-                    echo "conda version=$(conda --version)";
-                    conda create -n testenv;
             - run:
                 name: Install packages in conda env
                 command: |
-                    conda init bash;
-                    conda install -n testenv python=3.8 numpy lxml mkl sphinx numpydoc pillow -yq;
-                    conda install -n testenv sphinx-gallery junit-xml -c conda-forge -yq;
-                    conda activate testenv;
-                    pip install -e .;
-                    pip install pydata-sphinx-theme;
-                    echo "Conda active env = $CONDA_DEFAULT_ENV";
+                    ./tools/circleci_dependencies.sh
             - run:
                 name: Get data
                 command: |
@@ -70,7 +58,7 @@ jobs:
             - run:
                 name: make html
                 command: |
-                    conda activate testenv;
+                    source activate testenv;
                     echo "Conda active env = $CONDA_DEFAULT_ENV";
                     cd doc;
                     PATTERN=$(cat ../pattern.txt) make $(cat ../build.txt);
