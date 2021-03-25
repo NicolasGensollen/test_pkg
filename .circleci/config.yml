@@ -52,6 +52,10 @@ jobs:
                 command: |
                     ./tools/circleci_dependencies_apt.sh
             - run:
+                name: Setup conda path in env variables
+                command: |
+                    echo 'export PATH="$HOME/miniconda3/bin:$PATH"'  >> $BASH_ENV
+            - run:
                 name: Install packages in conda env
                 command: |
                     if
