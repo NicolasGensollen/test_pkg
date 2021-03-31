@@ -21,6 +21,7 @@ print(result)
 
 result = subtract(1, 3)
 print(result)
+print(add(-2, 6))
 
 #####################################
 # Run more computations
