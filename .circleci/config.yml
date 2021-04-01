@@ -87,7 +87,8 @@ jobs:
                     echo "Conda active env = $CONDA_DEFAULT_ENV";
                     echo "Which Python = $(which python)";
                     cd doc;
-                    PATTERN=$(cat ../pattern.txt) make $(cat ../build.txt);
+                    set -o pipefail;
+                    PATTERN=$(cat ../pattern.txt) make $(cat ../build.txt) 2>&1 | tee log.txt;
             - store_artifacts:
                 path: doc/build/test-results
                 destination: test-results
@@ -98,6 +99,8 @@ jobs:
             - store_artifacts:
                 path: doc/build/html_stable/
                 destination: stable
+            - store_artifacts:
+                path: doc/log.txt
             - persist_to_workspace:
                 root: doc/build
                 paths:
