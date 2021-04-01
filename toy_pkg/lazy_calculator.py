@@ -3,6 +3,9 @@
 The following functions do the same things as the functions
 in calculator but sleep for some time before returning the
 results...
+
+Authors: Nicolas Gensollen
+
 """
 
 import time
