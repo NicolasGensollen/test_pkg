@@ -31,7 +31,7 @@ jobs:
                     if [[ $(cat merge.txt) != "" ]]; then
                         echo "Merging $(cat merge.txt)";
                         echo $(git log $(git fetch upstream "refs/pull/$(cat merge.txt)/head")..upstream/main --pretty=format:'%h - %s');
-                        git pull --rebase upstream "refs/pull/$(cat merge.txt)/head";
+                        git pull --rebase upstream "refs/pull/$(cat merge.txt)/merge";
                     else
                         echo "Nuthin to do";
                     fi
