@@ -24,15 +24,15 @@ jobs:
             - run:
                 name: Merge with upstream
                 command: |
-                    echo $(git log -3 --pretty=format:'%h - %s');
+                    echo $(git log -6 --pretty=format:'\n%h - %s');
                     echo $(git log -1 --pretty=%B) | tee gitlog.txt
                     echo "gitlog.txt = $(cat gitlog.txt)"
                     echo ${CI_PULL_REQUEST//*pull\//} | tee merge.txt
                     if [[ $(cat merge.txt) != "" ]]; then
                         echo "Merging $(cat merge.txt)";
-                        git pull --ff-only upstream "refs/pull/$(cat merge.txt)/merge";
+                        git pull --ff-only upstream "refs/pull/$(cat merge.txt)/head";
                     fi
-                    echo $(git log -3 --pretty=format:'%h - %s');
+                    echo $(git log -6 --pretty=format:'\n%h - %s');
             # Load pip cache
             - restore_cache:
                 keys:
