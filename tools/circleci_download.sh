@@ -15,7 +15,9 @@ else
     done;
     echo PATTERN="$PATTERN";
     if [[ $PATTERN ]]; then
+        echo "pattern before cleaning : $PATTERN";
         PATTERN="\(${PATTERN::-2}\)";
+        echo "pattern after cleaning : $PATTERN";
         echo html_dev-pattern > build.txt;
     else
         echo html_dev-noplot > build.txt;

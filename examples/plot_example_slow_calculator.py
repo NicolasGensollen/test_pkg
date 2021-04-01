@@ -29,3 +29,6 @@ print(lazy_add(20, 42, 30))
 
 # Perform 2 - 4 and sleeps for 3 seconds...
 print(lazy_subtract(2, 4, 3))
+
+# Perform 1 - 1 and sleeps for 3 seconds...
+print(lazy_subtract(1, 1, 3))
