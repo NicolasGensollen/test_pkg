@@ -70,6 +70,9 @@ jobs:
                     else
                       ./tools/circleci_dependencies.sh;
                     fi
+            - restore_cache:
+                keys:
+                    - dataset1
             - run:
                 name: Get data
                 command: |
@@ -110,6 +113,10 @@ jobs:
                 key: miniconda
                 paths:
                     - ../miniconda3
+            - save_cache:
+                key: dataset1
+                paths:
+                    - ~/toy_pkg_data/fake_dataset_1
 
 workflows:
     version: 2

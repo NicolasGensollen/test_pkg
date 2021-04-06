@@ -361,6 +361,7 @@ def _dataset_gen(dataset_number=1, number_of_lines=200, random_state=0, sleep_ti
     """
 
     """
+    print("Downloading dataset {}...".format(dataset_number))
     rand_gen = check_random_state(random_state)
     _data = rand_gen.randint(0, 1000, (number_of_lines, 2))
     data = pd.DataFrame(_data, columns=['first term', 'second term'])
