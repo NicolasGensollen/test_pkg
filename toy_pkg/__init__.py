@@ -10,4 +10,4 @@ from .version import __version__
 
 # list all submodules available in toy_pkg and version
 __all__ = ['calculator', 'lazy_calculator', 'linalg',
-           '__version__']
+           'utils', 'datasets', '__version__']
