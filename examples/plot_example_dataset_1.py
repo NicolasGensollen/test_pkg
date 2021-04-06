@@ -7,6 +7,8 @@ This example rely on fake dataset 1 only.
 
 ######################################################
 # Load dataset
+#
+# Load fake dataset 1
 from toy_pkg.datasets import fetch_fake_dataset_1
 data = fetch_fake_dataset_1()
 print(data.description)
