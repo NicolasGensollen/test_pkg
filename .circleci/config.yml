@@ -72,7 +72,10 @@ jobs:
                     fi
             - restore_cache:
                 keys:
-                    - dataset1
+                    - dataset_1_3
+            - restore_cache:
+                keys:
+                    - dataset_2
             - run:
                 name: Get data
                 command: |
@@ -114,9 +117,14 @@ jobs:
                 paths:
                     - ../miniconda3
             - save_cache:
-                key: dataset1
+                key: dataset_1_3
                 paths:
                     - ~/toy_pkg_data/fake_dataset_1
+                    - ~/toy_pkg_data/fake_dataset_3
+            - save_cache:
+                key: dataset_2
+                paths:
+                    - ~/toy_pkg_data/fake_dataset_2
 
 workflows:
     version: 2
