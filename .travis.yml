@@ -13,17 +13,17 @@ matrix:
         - name: "Python 3.8 pre release versions"
           python: "3.8"
           env: DISTRIB="travisci" PIP_FLAGS="--pre" COVERAGE="true" 
-               NUMPY_VERSION="*" MATPLOTLIB_VERSION="*"
+               NUMPY_VERSION="*" MATPLOTLIB_VERSION="*" PANDAS_VERSION="*"
     
     include:
         - name: "Python 3.8 Matplotlib dev"
           python: "3.8"
-          env: DISTRIB="travisci" COVERAGE="true" NUMPY_VERSION="*" MATPLOTLIB_VERSION="dev"
+          env: DISTRIB="travisci" COVERAGE="true" NUMPY_VERSION="*" MATPLOTLIB_VERSION="dev" PANDAS_VERSION="*"
 
         - name: "Python 3.7 latest package versions"
           python: "3.7"
           env: DISTRIB="travisci" PYTHON_VERSION="3.7" COVERAGE="true" MATPLOTLIB_VERSION="*"
-               NUMPY_VERSION="*"
+               NUMPY_VERSION="*" PANDAS_VERSION="*"
 
         - name: "Python 3.6 Flake8 no tests"
           python: "3.6"
