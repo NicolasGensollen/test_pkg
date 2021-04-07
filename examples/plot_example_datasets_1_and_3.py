@@ -23,6 +23,8 @@ print(data3.description)
 
 ######################################################
 # Perform some computation
+#
+# computation on both datasets
 import pandas as pd
 from toy_pkg.lazy_calculator import lazy_add
 
