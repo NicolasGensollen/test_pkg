@@ -77,7 +77,8 @@ jobs:
             - run:
                 name: read commit message
                 command: |
-                    msg=$(git log --format=oneline -n -1);
+                    msg=$(git log -1 --format=oneline);
+                    echo $msg;
                     if [[ $msg == *"[force download]"* ]]; then
                         echo "All datasets will be downloaded as requested!";
                         touch restore.txt;
