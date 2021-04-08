@@ -80,6 +80,7 @@ jobs:
             - run:
                 name: read commit message
                 command: |
+                    echo $(git log --format=oneline -n -1);
                     if [[ "[force download]" == *"$(git log --format=oneline -n 1)"* ]]; then
                         echo "All datasets will be downloaded as requested!";
                         echo "" | tee restore.txt;
