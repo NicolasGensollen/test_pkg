@@ -62,6 +62,16 @@ jobs:
                         echo "Nuthin to do";
                     fi
                     echo $(git log -15 --pretty=format:'/n%h - %s');
+            - run:
+                name: read commit message
+                command: |
+                    if [[ "[force download]" == *"$(git log --format=oneline -n 1)"* ]]; then
+                        echo "All datasets will be downloaded as requested!";
+                        echo "true" | tee download.txt;
+                    else
+                        echo "Data cache will be used if available!";
+                        echo "false" | tee download.txt;
+                    fi
             # Load pip cache
             - restore_cache:
                 keys:
@@ -96,7 +106,20 @@ jobs:
                     else
                       ./tools/circleci_dependencies.sh;
                     fi
-            - restore_data_cache
+            - run:
+                name: echo download
+                command: |
+                    cat download.txt;
+                    if [[ "false" == $(cat download.txt) ]]; then
+                        echo "should download";
+                    fi
+            - when:
+                condition:
+                    and:
+                        - equal: ["false", $(cat download.txt)]
+                steps:
+                    - restore_data_cache
+
             - run:
                 name: Get data
                 command: |
