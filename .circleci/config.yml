@@ -1,5 +1,31 @@
-# Python CircleCI 2.0 configuration file
-version: 2
+# Python CircleCI 2.1 configuration file
+version: 2.1
+
+commands:
+    restore_data_cache:
+        description: "Restore data cache."
+        steps:
+            - restore_cache:
+                keys:
+                    - dataset_1_3
+            - restore_cache:
+                keys:
+                    - dataset_2
+
+    save_data_cache:
+        description: "Cache the downloaded data."
+        steps:
+            - save_cache:
+                key: dataset_1_3
+                paths:
+                    - ~/toy_pkg_data/fake_dataset_1
+                    - ~/toy_pkg_data/fake_dataset_3
+            - save_cache:
+                key: dataset_2
+                paths:
+                    - ~/toy_pkg_data/fake_dataset_2
+
+
 jobs:
     build_docs:
         docker:
@@ -70,12 +96,7 @@ jobs:
                     else
                       ./tools/circleci_dependencies.sh;
                     fi
-            - restore_cache:
-                keys:
-                    - dataset_1_3
-            - restore_cache:
-                keys:
-                    - dataset_2
+            - restore_data_cache
             - run:
                 name: Get data
                 command: |
@@ -116,19 +137,11 @@ jobs:
                 key: miniconda
                 paths:
                     - ../miniconda3
-            - save_cache:
-                key: dataset_1_3
-                paths:
-                    - ~/toy_pkg_data/fake_dataset_1
-                    - ~/toy_pkg_data/fake_dataset_3
-            - save_cache:
-                key: dataset_2
-                paths:
-                    - ~/toy_pkg_data/fake_dataset_2
+            - save_data_cache
 
 workflows:
     version: 2
 
-    default:
+    build_doc:
         jobs:
             - build_docs
