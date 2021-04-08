@@ -4,13 +4,20 @@ version: 2.1
 commands:
     restore_data_cache:
         description: "Restore data cache."
+        parameters:
+            restore:
+                type: string
+                default: ""
         steps:
-            - restore_cache:
-                keys:
-                    - dataset_1_3
-            - restore_cache:
-                keys:
-                    - dataset_2
+            - when:
+                condition: <<parameters.restore>>
+                steps:
+                    - restore_cache:
+                        keys:
+                            - dataset_1_3
+                    - restore_cache:
+                        keys:
+                            - dataset_2
 
     save_data_cache:
         description: "Cache the downloaded data."
@@ -67,7 +74,7 @@ jobs:
                 command: |
                     if [[ "[force download]" == *"$(git log --format=oneline -n 1)"* ]]; then
                         echo "All datasets will be downloaded as requested!";
-                        echo "true" | tee download.txt;
+                        echo "" | tee download.txt;
                     else
                         echo "Data cache will be used if available!";
                         echo "false" | tee download.txt;
@@ -113,12 +120,9 @@ jobs:
                     if [[ "false" == $(cat download.txt) ]]; then
                         echo "should download";
                     fi
-            - when:
-                condition:
-                    and:
-                        - equal: ["false", $(cat download.txt)]
-                steps:
-                    - restore_data_cache
+
+            - restore_data_cache:
+                restore: $(cat download.txt)
 
             - run:
                 name: Get data
