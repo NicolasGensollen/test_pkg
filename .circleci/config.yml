@@ -13,6 +13,10 @@ commands:
                 condition: <<parameters.restore>>
                 steps:
                     - run:
+                        name: print restore
+                        command: |
+                            echo <<parameters.restore>>;
+                    - run:
                         name: Generate cache keys
                         command: |
                             date +%U > week_num;
@@ -80,10 +84,11 @@ jobs:
             - run:
                 name: read commit message
                 command: |
-                    echo $(git log --format=oneline -n -1);
-                    if [[ "[force download]" == *"$(git log --format=oneline -n 1)"* ]]; then
+                    msg=$(git log --format=oneline -n -1);
+                    if [[ $msg == *"[force download]"* ]]; then
                         echo "All datasets will be downloaded as requested!";
-                        echo "" | tee restore.txt;
+                        touch restore.txt;
+                        cat restore.txt;
                     else
                         echo "Data cache will be used if available!";
                         echo "true" | tee restore.txt;
