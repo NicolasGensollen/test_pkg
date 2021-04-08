@@ -4,28 +4,21 @@ version: 2.1
 commands:
     restore_data_cache:
         description: "Restore data cache."
-        parameters:
-            restore:
-                type: string
-                default: ""
         steps:
-            - when:
-                condition: <<parameters.restore>>
-                steps:
-                    - run:
-                        name: print restore
-                        command: |
-                            echo <<parameters.restore>>;
-                    - run:
-                        name: Generate cache keys
-                        command: |
-                            date +%U > week_num;
-                    - restore_cache:
-                        keys:
-                            - v1-dataset_1_3-{{ checksum "week_num" }}
-                    - restore_cache:
-                        keys:
-                            - v1-dataset_2-{{ checksum "week_num" }}
+            - run:
+                name: Get restore
+                command: |
+                    if [[ $(cat restore.txt) == "true" ]]; then
+                        date +%U > week_num;
+                    else
+                        echo 'missing' > week_num;
+                    fi
+            - restore_cache:
+                keys:
+                    - v1-dataset_1_3-{{ checksum "week_num" }}
+            - restore_cache:
+                keys:
+                    - v1-dataset_2-{{ checksum "week_num" }}
 
     save_data_cache:
         description: "Cache the downloaded data."
@@ -137,8 +130,7 @@ jobs:
                         echo "should not restore cache";
                     fi
 
-            - restore_data_cache:
-                restore: $(cat restore.txt)
+            - restore_data_cache
 
             - run:
                 name: Get data
