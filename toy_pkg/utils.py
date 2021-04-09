@@ -326,7 +326,7 @@ def _fake_download(name):
     """
     datasets_gen_params = {'fake_dataset_1.csv':
                                 {'dataset_number': 1,
-                                 'number_of_lines': 200,
+                                 'number_of_lines': 206,
                                  'random_state': 0,
                                  'sleep_time': 10,
                                 },
