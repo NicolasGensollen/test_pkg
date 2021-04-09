@@ -16,10 +16,10 @@ commands:
                     cat week_num;
             - restore_cache:
                 keys:
-                    - v1-dataset_1_3-{{ checksum "week_num" }}
+                    - v1-dataset_1_3-{{ checksum "week_num" }}-N609mxdrJesNlwSq7bE11ge72i7Uh30W7VJ8zJ4KQ7w=
             - restore_cache:
                 keys:
-                    - v1-dataset_2-{{ checksum "week_num" }}
+                    - v1-dataset_2-{{ checksum "week_num" }}-hUBV5N5HCc4m60CHAXzqkoT4pAsQBXKeeCTKf1ZiubQ=
 
     save_data_cache:
         description: "Cache the downloaded data."
