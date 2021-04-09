@@ -28,12 +28,18 @@ commands:
                 name: Generate cache keys
                 command: |
                     date +%U > week_num;
-                    find ~/toy_pkg_data/fake_dataset_1 ~/toy_pkg_data/fake_dataset_3 -xdev -type f -print0 | LC_COLLATE=C sort -z | xargs -0 cat | md5sum - > gen_key_1_3;
-                    cat gen_key_1_3;
+                    for dataset in ~/toy_pkg_data/*; do
+                        short=${dataset##*/};
+                        echo "Generating hash of dataset $short...";
+                        if [[ -d "$dataset" ]]; then
+                            find $dataset -xdev -type f -print0 | LC_COLLATE=C sort -z | xargs -0 cat | md5sum - > "gen_key_$short";
+                        fi
+                    done
+                    cat gen_key_fake_dataset_1 gen_key_fake_dataset_2 | md5sum - > gen_key_combined;
                     find ~/toy_pkg_data/fake_dataset_2 -xdev -type f -print0 | LC_COLLATE=C sort -z | xargs -0 cat | md5sum - > gen_key_2;
                     cat gen_key_2;
             - save_cache:
-                key: v1-dataset_1_3-{{ checksum "week_num" }}-{{ checksum "gen_key_1_3" }}
+                key: v1-dataset_1_3-{{ checksum "week_num" }}-{{ checksum "gen_key_combined" }}
                 paths:
                     - ~/toy_pkg_data/fake_dataset_1
                     - ~/toy_pkg_data/fake_dataset_3
