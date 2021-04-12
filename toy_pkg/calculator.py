@@ -17,6 +17,10 @@ def add(first_term, second_term):
     result : Number
         Result of the addition.
 
+    Notes
+    -----
+    Unrelated reference by :footcite:`Gensollen2020` for testing.
+
     Examples
     --------
     >>> add(1, 1)
@@ -31,6 +35,10 @@ def add(first_term, second_term):
     subtract : Subtraction
     multiply : Multiplication
     divide : Division
+
+    References
+    ----------
+    .. footbibliography::
 
     """
     result = first_term + second_term

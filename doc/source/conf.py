@@ -45,6 +45,7 @@ extensions = ['sphinx_gallery.gen_gallery',
               'sphinx.ext.imgmath',
               'sphinx.ext.intersphinx',
               'sphinx.ext.napoleon',
+              'sphinxcontrib.bibtex',
               ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -67,6 +68,11 @@ exclude_patterns = []
 # List of directories, relative to source directory, that shouldn't be
 # searched for source files.
 exclude_trees = ['_build', 'templates', 'includes']
+
+# sphinxcontrib-bibtex
+bibtex_bibfiles = ['../references.bib']
+bibtex_style = 'unsrt'
+bibtex_footbibliography_header = ''
 
 # If true, '()' will be appended to :func: etc. cross-reference text.
 add_function_parentheses = False
