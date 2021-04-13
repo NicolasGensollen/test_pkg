@@ -74,6 +74,8 @@ bibtex_bibfiles = ['../references.bib']
 bibtex_style = 'unsrt'
 bibtex_footbibliography_header = ''
 
+nitpick_ignore = [('py:class', 'Number')]
+
 # If true, '()' will be appended to :func: etc. cross-reference text.
 add_function_parentheses = False
 

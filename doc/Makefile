@@ -21,6 +21,11 @@ help:
 %: Makefile
 	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIRDEV)" $(SPHINXOPTS) $(O)
 
+html-strict:
+	$(SPHINXBUILD) -W -T -n -b html $(SOURCEDIR) $(BUILDDIRDEV) $(SPHINXOPTS)
+	@echo
+	@echo "Build finished. The HTML pages are in _build/html."
+
 html_dev-noplot:
 	$(SPHINXBUILD) -D plot_gallery=0 -b html $(SOURCEDIR) $(BUILDDIRDEV) $(SPHINXOPTS)
 	@echo
