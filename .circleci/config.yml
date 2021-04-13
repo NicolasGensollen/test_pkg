@@ -15,15 +15,11 @@ commands:
                     fi
                     cat week_num;
             - restore_cache:
-                environment:
-                    WEEK_NUM: "test"
                 keys:
-                    - v1-dataset_1_3-{{ .Environment.WEEK_NUM }}-N609mxdrJesNlwSq7bE11ge72i7Uh30W7VJ8zJ4KQ7w=
+                    - v1-dataset_1_3-{{ checksum "week_num" }}-N609mxdrJesNlwSq7bE11ge72i7Uh30W7VJ8zJ4KQ7w=
             - restore_cache:
-                environment:
-                    WEEK_NUM: "test"
                 keys:
-                    - v1-dataset_2-{{ .Environment.WEEK_NUM }}-hUBV5N5HCc4m60CHAXzqkoT4pAsQBXKeeCTKf1ZiubQ=
+                    - v1-dataset_2-{{ checksum "week_num" }}-hUBV5N5HCc4m60CHAXzqkoT4pAsQBXKeeCTKf1ZiubQ=
 
     save_data_cache:
         description: "Cache the downloaded data."
@@ -42,15 +38,13 @@ commands:
                     cat gen_key_fake_dataset_1 gen_key_fake_dataset_2 | md5sum - > gen_key_combined;
                     find ~/toy_pkg_data/fake_dataset_2 -xdev -type f -print0 | LC_COLLATE=C sort -z | xargs -0 cat | md5sum - > gen_key_2;
                     cat gen_key_2;
-                environment:
-                    WEEK_NUM: "test"
             - save_cache:
-                key: v1-dataset_1_3-{{ .Environment.CIRCLE_SHA1 }}-{{ checksum "gen_key_combined" }}
+                key: v1-dataset_1_3-{{ checksum "week_num" }}-{{ checksum "gen_key_combined" }}
                 paths:
                     - ~/toy_pkg_data/fake_dataset_1
                     - ~/toy_pkg_data/fake_dataset_3
             - save_cache:
-                key: v1-dataset_2-{{ .Environment.CIRCLE_SHA1) }}-{{ checksum "gen_key_2" }}
+                key: v1-dataset_2-{{ checksum "week_num") }}-{{ checksum "gen_key_2" }}
                 paths:
                     - ~/toy_pkg_data/fake_dataset_2
 
@@ -59,8 +53,6 @@ jobs:
     build_docs:
         docker:
             - image: circleci/python:3.8.5-buster
-        environment:
-            WEEK_NUM: "test"
 
         steps:
             - restore_cache:
