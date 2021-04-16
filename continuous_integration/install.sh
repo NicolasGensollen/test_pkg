@@ -17,7 +17,7 @@ echo_requirements_string() {
     #   - for numpy, NUMPY_VERSION is used
     TO_INSTALL_ALWAYS="pytest"
     REQUIREMENTS="$TO_INSTALL_ALWAYS"
-    TO_INSTALL_MAYBE="numpy matplotlib flake8"
+    TO_INSTALL_MAYBE="numpy matplotlib pandas scikit-learn flake8"
     for PACKAGE in $TO_INSTALL_MAYBE; do
         # Capitalize package name and add _VERSION
         PACKAGE_VERSION_VARNAME="${PACKAGE^^}_VERSION"
