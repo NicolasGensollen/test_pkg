@@ -20,6 +20,7 @@ def add(first_term, second_term):
     Notes
     -----
     Unrelated reference by :footcite:`Gensollen2020` for testing.
+    Another ref to a website :footcite:`NicolasGensollen` for testing.
 
     Examples
     --------

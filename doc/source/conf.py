@@ -70,7 +70,7 @@ exclude_patterns = []
 exclude_trees = ['_build', 'templates', 'includes']
 
 # sphinxcontrib-bibtex
-bibtex_bibfiles = ['../references.bib']
+bibtex_bibfiles = ['../references.bib', '../soft_references.bib']
 bibtex_style = 'unsrt'
 bibtex_footbibliography_header = ''
 
