@@ -21,7 +21,16 @@ matrix:
           python: "3.8"
           env: DISTRIB="travisci" COVERAGE="true" NUMPY_VERSION="*" MATPLOTLIB_VERSION="dev" PANDAS_VERSION="*" SCIKIT_LEARN_VERSION="*"
 
-        - name: "Python 3.7 latest package versions"
+        - name: "ARM64 - Python 3.7 latest package versions"
+          os: linux
+          arch: arm64
+          python: "3.7"
+          env: DISTRIB="travisci" PYTHON_VERSION="3.7" COVERAGE="true" MATPLOTLIB_VERSION="*"
+               NUMPY_VERSION="*" PANDAS_VERSION="*" SCIKIT_LEARN_VERSION="*"
+        
+        - name: "AMD64 - Python 3.7 latest package versions"
+          os: linux
+          arch: amd64
           python: "3.7"
           env: DISTRIB="travisci" PYTHON_VERSION="3.7" COVERAGE="true" MATPLOTLIB_VERSION="*"
                NUMPY_VERSION="*" PANDAS_VERSION="*" SCIKIT_LEARN_VERSION="*"
