@@ -29,13 +29,13 @@ jobs:
         run: |
             which python
       - shell: bash {0}
-        run: ./tools/github_actions_dependencies.sh
+        run: ./tools/github/dependencies.sh
         name: 'Install dependencies'
       - shell: bash {0}
-        run: ./tools/github_actions_install.sh
+        run: ./tools/github/install.sh
         name: 'Install toy_pkg'
       - shell: bash {0}
-        run: ./tools/github_actions_test.sh
+        run: ./tools/github/test.sh
         name: 'Run tests'
      
 

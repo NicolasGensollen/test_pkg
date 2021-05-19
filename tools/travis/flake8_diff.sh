@@ -2,7 +2,7 @@
 
 set -e
 
-PROJECT=nilearn/nilearn
+PROJECT=NicolasGensollen/toy_pkg
 PROJECT_URL=https://github.com/$PROJECT.git
 
 echo "Remotes:"
