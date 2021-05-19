@@ -7,42 +7,43 @@ env:
     global:
         - TEST_RUN_FOLDER="/tmp"
 
-matrix:
-    fast_finish: true
-    allow_failures:
-        - name: "Python 3.8 pre release versions"
-          python: "3.8"
-          env: DISTRIB="travisci" PIP_FLAGS="--pre" COVERAGE="true" 
-               NUMPY_VERSION="*" MATPLOTLIB_VERSION="*" PANDAS_VERSION="*"
-               SCIKIT_LEARN_VERSION="*"
-    
+cache:
+    apt: true
+    directories:
+        - $HOME/.cache/pip
+        - $HOME/.ccache
+jobs:
     include:
-        - name: "Python 3.8 Matplotlib dev"
-          python: "3.8"
-          env: DISTRIB="travisci" COVERAGE="true" NUMPY_VERSION="*" MATPLOTLIB_VERSION="dev" PANDAS_VERSION="*" SCIKIT_LEARN_VERSION="*"
 
-        - name: "ARM64 - Python 3.7 latest package versions"
-          os: linux
-          arch: arm64
-          python: "3.7"
-          env: DISTRIB="travisci" PYTHON_VERSION="3.7" COVERAGE="true" MATPLOTLIB_VERSION="*"
-               NUMPY_VERSION="*" PANDAS_VERSION="*" SCIKIT_LEARN_VERSION="*"
-        
-        - name: "AMD64 - Python 3.7 latest package versions"
+        - python: 3.9
           os: linux
           arch: amd64
-          python: "3.7"
-          env: DISTRIB="travisci" PYTHON_VERSION="3.7" COVERAGE="true" MATPLOTLIB_VERSION="*"
-               NUMPY_VERSION="*" PANDAS_VERSION="*" SCIKIT_LEARN_VERSION="*"
+          env:
+              - FLAKE8=true
 
-        - name: "Python 3.6 Flake8 no tests"
-          python: "3.6"
-          env: DISTRIB="travisci" PYTHON_VERSION="3.6" FLAKE8_VERSION="*" SKIP_TESTS="true"
+        - python: 3.9
+          os: linux
+          arch: arm64
+          if: commit_message =~ /\[arm64\]/
+          env:
+              - CPU_COUNT=4
 
-install: source continuous_integration/install.sh
+        - python: 3.8
+          os: linux
+          arch: arm64
+          if: type = cron or commit_message =~ /\[cd build\]/
+          env:
+              - BUILD_WHEEL=true
+              - CIBW_BUILD=cp38-manylinux_aarch64
 
-before_script: make clean
+        - python: 3.9
+          os: linux
+          arch: arm64
+          if: type = cron or commit_message =~ /\[cd build\]/
+          env:
+              - BUILD_WHEEL=true
+              - CIBW_BUILD=cp39-manylinux_aarch64
 
-script: source continuous_integration/test_script.sh
-
-after_success: source continuous_integration/after_success.sh
+install: source tools/travis/install.sh
+script: source tools/travis/test_script.sh
+after_success: source tools/travis/after_success.sh

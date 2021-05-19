@@ -2,6 +2,10 @@
 
 set -e
 
+if [[ -n "$FLAKE8" ]]; then
+    source continuous_integration/flake8_diff.sh
+fi
+
 if [[ "$SKIP_TESTS" != "true" ]]; then
     python continuous_integration/show-python-packages-versions.py
     # Copy setup.cfg to TEST_RUN_FOLDER where we are going to run the tests from
