@@ -53,13 +53,13 @@ jobs:
             python --version
         name: 'which python and pip'
       - shell: bash {0}
-        run: ./tools/github_actions_dependencies.sh
+        run: ./tools/github/dependencies.sh
         name: 'Install dependencies'
       - shell: bash {0}
-        run: ./tools/github_actions_install.sh
+        run: ./tools/github/install.sh
         name: 'Install toy_pkg'
       - shell: bash {0}
-        run: ./tools/github_actions_test.sh
+        run: ./tools/github/test.sh
         name: 'Run tests'
       - uses: codecov/codecov-action@v1
         if: success()
@@ -96,13 +96,13 @@ jobs:
             pwd
         name: 'which python'
       - shell: bash {0}
-        run: ./tools/github_actions_dependencies.sh
+        run: ./tools/github/dependencies.sh
         name: 'Install dependencies'
       - shell: bash {0}
-        run: ./tools/github_actions_install.sh
+        run: ./tools/github/install.sh
         name: 'Install toy_pkg'
       - shell: bash {0}
-        run: ./tools/github_actions_test.sh
+        run: ./tools/github/test.sh
         continue-on-error: true
         name: 'Run tests'
       - uses: codecov/codecov-action@v1
@@ -146,10 +146,10 @@ jobs:
         run: which python
         name: 'which python'
       - shell: bash -l {0}
-        run: ./tools/github_actions_install.sh
+        run: ./tools/github/install.sh
         name: 'Install toy_pkg'
       - shell: bash -l {0}
-        run: ./tools/github_actions_test.sh
+        run: ./tools/github/test.sh
         name: 'Run tests'
       - name: 'Upload coverage to CodeCov'
         run: tools/submit_coverage.sh

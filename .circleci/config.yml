@@ -117,7 +117,7 @@ jobs:
             - run:
                 name: Install apt packages
                 command: |
-                    ./tools/circleci_dependencies_apt.sh
+                    ./tools/circle/dependencies_apt.sh
             - run:
                 name: Setup conda path in env variables
                 command: |
@@ -130,7 +130,7 @@ jobs:
                     then
                       echo "Conda env testenv already exists courtesy of the cache.";
                     else
-                      ./tools/circleci_dependencies.sh;
+                      ./tools/circle/dependencies.sh;
                     fi
             - run:
                 name: echo restore
@@ -147,7 +147,7 @@ jobs:
             - run:
                 name: Get data
                 command: |
-                    ./tools/circleci_download.sh
+                    ./tools/circle/download.sh
             - run:
                 name: Verify build type
                 command: |
