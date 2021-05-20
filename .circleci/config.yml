@@ -184,6 +184,11 @@ jobs:
                 key: miniconda
                 paths:
                     - ../miniconda3
+            - run: |
+                if [[ "$(cat build.txt)" != "full build" ]]; then
+                    echo "Partial build : Not saving the data cache!"
+                    circleci-agent step halt
+                fi
             - save_data_cache
 
 workflows:
