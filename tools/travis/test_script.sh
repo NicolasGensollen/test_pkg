@@ -3,7 +3,7 @@
 set -e
 
 if [[ -n "$FLAKE8" ]]; then
-    source tools/travis/flake8_diff.sh
+    source tools/flake8_diff.sh
 fi
 
 TEST_CMD="pytest --pyargs"
