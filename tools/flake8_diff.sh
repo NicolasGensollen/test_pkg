@@ -45,15 +45,15 @@ git log -2 --pretty=short
 git fetch $REMOTE main
 REMOTE_MAIN_REF="$REMOTE/main"
 
-HEAD_HASH="$(git rev-parse HEAD)"
+HEAD_HASH="$(git rev-list --all --parents --max-count=1)"
 HEAD_HASH2="$(git rev-parse @)"
 
 echo "$HEAD_HASH"
 echo "$HEAD_HASH2"
 
 # Find common ancestor between HEAD and remotes/$REMOTE/main
-COMMIT=$(git merge-base @ $REMOTE_MAIN_REF) || \
-    echo "No common ancestor found for $(git show @ -q) and $(git show $REMOTE_MAIN_REF -q)"
+COMMIT=$(git merge-base @~1 $REMOTE_MAIN_REF) || \
+    echo "No common ancestor found for $(git show @~1 -q) and $(git show $REMOTE_MAIN_REF -q)"
 
 if [[ -n "$TMP_REMOTE" ]]; then
     git remote remove $TMP_REMOTE
