@@ -201,8 +201,9 @@ def power(term, exponent):
     100
     """
     if not isinstance(exponent, int):
-        raise ValueError("Exponent should be an integer. You provided {}.".format(
-            type(exponent)
-        ))
+        raise ValueError("Exponent should be an integer. "
+                         "You provided {}.".format(
+                             type(exponent)
+                         ))
     result = term**exponent
     return result
