@@ -45,8 +45,10 @@ git log -2 --pretty=short
 git fetch $REMOTE main
 REMOTE_MAIN_REF="$REMOTE/main"
 
-BRANCH_NAME=name
-git fetch $REMOTE refs/pull/17/head:$BRANCH_NAME
+PULL_REQUEST_NUMBER=${GITHUB_REF//*pull\//}
+PULL_REQUEST_NUMBER=${PULL_REQUEST_NUMBER//\/merge/}
+BRANCH_NAME=github_pr_$PULL_REQUEST_NUMBER
+git fetch $REMOTE refs/pull/$PULL_REQUEST_NUMBER/head:$BRANCH_NAME
 git checkout $BRANCH_NAME
 
 HEAD_HASH2="$(git rev-parse @)"
@@ -54,8 +56,8 @@ HEAD_HASH2="$(git rev-parse @)"
 echo "$HEAD_HASH2"
 
 # Find common ancestor between HEAD and remotes/$REMOTE/main
-COMMIT=$(git merge-base @~1 $REMOTE_MAIN_REF) || \
-    echo "No common ancestor found for $(git show @~1 -q) and $(git show $REMOTE_MAIN_REF -q)"
+COMMIT=$(git merge-base @ $REMOTE_MAIN_REF) || \
+    echo "No common ancestor found for $(git show @ -q) and $(git show $REMOTE_MAIN_REF -q)"
 
 if [[ -n "$TMP_REMOTE" ]]; then
     git remote remove $TMP_REMOTE
