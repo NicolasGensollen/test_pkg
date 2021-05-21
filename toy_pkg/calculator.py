@@ -158,3 +158,49 @@ def divide(first_term, second_term):
     result = first_term / second_term
     return result
 
+
+def power(term, exponent):
+    """Raise term to exponent.
+
+    Parameters
+    ----------
+    term : Number
+        Term to be raised.
+
+    exponent : int
+        Exponent.
+
+    Returns
+    -------
+    result : Number
+        Result of the operation.
+
+    Raises
+    ------
+    ValueError
+        If exponent is not an integer.
+
+    See Also
+    --------
+    add : Addition
+    subtract : Subtraction
+    multiply : Multiplication
+    divide : Division
+
+    Examples
+    --------
+    >>> power(1, 1)
+    1
+    >>> power(2, 2)
+    4
+    >>> power(4, 2)
+    16
+    >>> power(10, 2)
+    100
+    """
+    if not isinstance(exponent, int):
+        raise ValueError("Exponent should be an integer. You provided {}.".format(
+            type(exponent)
+        ))
+    result = term**exponent
+    return result
