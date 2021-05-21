@@ -37,6 +37,7 @@ if [[ "$TRAVIS" == "true" ]]; then
     fi
 fi
 
+echo "$GITHUB_REF"
 
 echo -e '\nLast 2 commits:'
 echo '--------------------------------------------------------------------------------'
