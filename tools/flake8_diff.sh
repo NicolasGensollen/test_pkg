@@ -37,7 +37,11 @@ if [[ "$TRAVIS" == "true" ]]; then
     fi
 fi
 
-echo "$GITHUB_REF"
+echo ${GITHUB_REF//*pull\//} | tee merge.txt
+echo "$(cat merge.txt)"
+$BRANCH_NAME=github_action_pr
+git fetch $REMOTE "refs/pull/$(cat merge.txt)/head:$BRANCH_NAME
+git checkout $BRANCH_NAME
 
 echo -e '\nLast 2 commits:'
 echo '--------------------------------------------------------------------------------'
@@ -46,7 +50,6 @@ git log -2 --pretty=short
 git fetch $REMOTE main
 REMOTE_MAIN_REF="$REMOTE/main"
 
-HEAD_HASH="$(git rev-list --all --parents --max-count=1)"
 HEAD_HASH2="$(git rev-parse @)"
 
 echo "$HEAD_HASH"
