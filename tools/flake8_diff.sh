@@ -37,11 +37,6 @@ if [[ "$TRAVIS" == "true" ]]; then
     fi
 fi
 
-echo ${GITHUB_REF//*pull\//} | tee merge.txt
-echo "$(cat merge.txt)"
-$BRANCH_NAME=github_action_pr
-git fetch $REMOTE "refs/pull/$(cat merge.txt)/head:$BRANCH_NAME
-git checkout $BRANCH_NAME
 
 echo -e '\nLast 2 commits:'
 echo '--------------------------------------------------------------------------------'
@@ -50,9 +45,12 @@ git log -2 --pretty=short
 git fetch $REMOTE main
 REMOTE_MAIN_REF="$REMOTE/main"
 
+BRANCH_NAME=name
+git fetch $REMOTE refs/pull/17/head:$BRANCH_NAME
+git checkout $BRANCH_NAME
+
 HEAD_HASH2="$(git rev-parse @)"
 
-echo "$HEAD_HASH"
 echo "$HEAD_HASH2"
 
 # Find common ancestor between HEAD and remotes/$REMOTE/main
