@@ -20,6 +20,9 @@ if [[ -z "$REMOTE" ]]; then
     git remote add $REMOTE $PROJECT_URL
 fi
 
+git fetch $REMOTE main
+REMOTE_MAIN_REF="$REMOTE/main"
+
 if [[ "$TRAVIS" == "true" ]]; then
     if [[ "$TRAVIS_PULL_REQUEST" == "false" ]]
     then
@@ -35,6 +38,12 @@ if [[ "$TRAVIS" == "true" ]]; then
         git fetch $REMOTE pull/$TRAVIS_PULL_REQUEST/head:$BRANCH_NAME
         git checkout $BRANCH_NAME
     fi
+elif [[ "$GITHUB_ACTIONS" == "true" ]]; then
+    PULL_REQUEST_NUMBER=${GITHUB_REF//*pull\//}
+    PULL_REQUEST_NUMBER=${PULL_REQUEST_NUMBER//\/merge/}
+    BRANCH_NAME=github_pr_$PULL_REQUEST_NUMBER
+    git fetch $REMOTE refs/pull/$PULL_REQUEST_NUMBER/head:$BRANCH_NAME
+    git checkout $BRANCH_NAME
 fi
 
 
@@ -42,18 +51,6 @@ echo -e '\nLast 2 commits:'
 echo '--------------------------------------------------------------------------------'
 git log -2 --pretty=short
 
-git fetch $REMOTE main
-REMOTE_MAIN_REF="$REMOTE/main"
-
-PULL_REQUEST_NUMBER=${GITHUB_REF//*pull\//}
-PULL_REQUEST_NUMBER=${PULL_REQUEST_NUMBER//\/merge/}
-BRANCH_NAME=github_pr_$PULL_REQUEST_NUMBER
-git fetch $REMOTE refs/pull/$PULL_REQUEST_NUMBER/head:$BRANCH_NAME
-git checkout $BRANCH_NAME
-
-HEAD_HASH2="$(git rev-parse @)"
-
-echo "$HEAD_HASH2"
 
 # Find common ancestor between HEAD and remotes/$REMOTE/main
 COMMIT=$(git merge-base @ $REMOTE_MAIN_REF) || \
