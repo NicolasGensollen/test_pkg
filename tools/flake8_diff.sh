@@ -21,6 +21,7 @@ if [[ -z "$REMOTE" ]]; then
 fi
 
 echo "REMOTE = $REMOTE"
+git fetch $REMOTE main
 REMOTE_MAIN_REF="$REMOTE/main"
 
 echo "REMOTE_MAIN_REF = $REMOTE_MAIN_REF"
@@ -37,7 +38,6 @@ if [[ "$TRAVIS" == "true" ]]; then
         # writing). This may not be enough to find the common ancestor with
         # $REMOTE/main so we unshallow the git checkout
         git fetch --unshallow || echo "Unshallowing the git checkout failed"
-        git fetch $REMOTE_MAIN_REF
     else
         # We want to fetch the code as it is in the PR branch and not
         # the result of the merge into main. This way line numbers
@@ -55,8 +55,6 @@ elif [[ "$GITHUB_ACTIONS" == "true" ]]; then
     git fetch $REMOTE refs/pull/$PULL_REQUEST_NUMBER/head:$BRANCH_NAME
     git checkout $BRANCH_NAME
 fi
-
-git fetch $REMOTE main
 
 echo -e '\nLast 2 commits:'
 echo '--------------------------------------------------------------------------------'
