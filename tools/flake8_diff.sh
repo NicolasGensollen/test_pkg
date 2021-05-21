@@ -20,8 +20,15 @@ if [[ -z "$REMOTE" ]]; then
     git remote add $REMOTE $PROJECT_URL
 fi
 
-git fetch $REMOTE main
+echo "REMOTE = $REMOTE"
 REMOTE_MAIN_REF="$REMOTE/main"
+
+echo "REMOTE_MAIN_REF = $REMOTE_MAIN_REF"
+echo "TRAVIS = $TRAVIS"
+echo "TRAVIS EVENT TYPE = $TRAVIS_EVENT_TYPE"
+echo "TRAVIS PULL REQ = $TRAVIS_PULL_REQUEST"
+echo "TRAVIS PULL REQ BRANCH = $TRAVIS_PULL_REQUEST_BRANCH"
+echo "TRAVIS PULL REQ SHA = $TRAVIS_PULL_REQUEST_SHA"
 
 if [[ "$TRAVIS" == "true" ]]; then
     if [[ "$TRAVIS_PULL_REQUEST" == "false" ]]
@@ -30,15 +37,18 @@ if [[ "$TRAVIS" == "true" ]]; then
         # writing). This may not be enough to find the common ancestor with
         # $REMOTE/main so we unshallow the git checkout
         git fetch --unshallow || echo "Unshallowing the git checkout failed"
+        git fetch $REMOTE_MAIN_REF
     else
         # We want to fetch the code as it is in the PR branch and not
         # the result of the merge into main. This way line numbers
         # reported by Travis will match with the local code.
         BRANCH_NAME=travis_pr_$TRAVIS_PULL_REQUEST
-        git fetch $REMOTE pull/$TRAVIS_PULL_REQUEST/head:$BRANCH_NAME
+        echo "$TRAVIS_PULL_REQUEST"
+        git fetch $REMOTE refs/pull/$TRAVIS_PULL_REQUEST/head:$BRANCH_NAME
         git checkout $BRANCH_NAME
     fi
 elif [[ "$GITHUB_ACTIONS" == "true" ]]; then
+    echo "$GITHUB_SHA"
     PULL_REQUEST_NUMBER=${GITHUB_REF//*pull\//}
     PULL_REQUEST_NUMBER=${PULL_REQUEST_NUMBER//\/merge/}
     BRANCH_NAME=github_pr_$PULL_REQUEST_NUMBER
@@ -46,6 +56,7 @@ elif [[ "$GITHUB_ACTIONS" == "true" ]]; then
     git checkout $BRANCH_NAME
 fi
 
+git fetch $REMOTE main
 
 echo -e '\nLast 2 commits:'
 echo '--------------------------------------------------------------------------------'
