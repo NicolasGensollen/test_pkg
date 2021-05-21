@@ -49,7 +49,7 @@ if [[ "$TRAVIS" == "true" ]]; then
         git checkout $BRANCH_NAME
     fi
 elif [[ "$GITHUB_ACTIONS" == "true" ]]; then
-    if [[ "$GITHUB_EVENT_NAME" == "pull request" ]]; then
+    if [[ "$GITHUB_EVENT_NAME" == "pull_request" ]]; then
         echo "$GITHUB_SHA"
         PULL_REQUEST_NUMBER=${GITHUB_REF//*pull\//}
         PULL_REQUEST_NUMBER=${PULL_REQUEST_NUMBER//\/merge/}
