@@ -45,6 +45,12 @@ git log -2 --pretty=short
 git fetch $REMOTE main
 REMOTE_MAIN_REF="$REMOTE/main"
 
+HEAD_HASH="$(git rev-parse HEAD)"
+HEAD_HASH2="$(git rev-parse @)"
+
+echo "$HEAD_HASH"
+echo "$HEAD_HASH2"
+
 # Find common ancestor between HEAD and remotes/$REMOTE/main
 COMMIT=$(git merge-base @ $REMOTE_MAIN_REF) || \
     echo "No common ancestor found for $(git show @ -q) and $(git show $REMOTE_MAIN_REF -q)"
