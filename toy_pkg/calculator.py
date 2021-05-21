@@ -197,6 +197,8 @@ def power(term, exponent):
     16
     >>> power(10, 2)
     100
+    >>> power(100, 1)
+    100
     """
     if not isinstance(exponent, int):
         raise ValueError("Exponent should be an integer. You provided {}.".format(
