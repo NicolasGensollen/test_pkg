@@ -25,7 +25,7 @@ conda update --yes conda
 
 conda init bash
 conda create -n testenv -yq
-conda install -n testenv -yq python=3.8 numpy scipy scikit-learn flake8 pytest pandas
+conda install -n testenv -yq python=3.8 numpy scipy scikit-learn flake8 pytest pandas pytest-xdist
 source activate testenv
 python -m pip install --user --upgrade --progress-bar off pip setuptools
 python -m pip install .
