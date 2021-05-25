@@ -17,6 +17,7 @@ env:
     global:
         - CPU_COUNT=3
         - TEST_DIR=/tmp/toy_pkg
+        - CIBW_BUILD_VERBOSITY=1
 
 jobs:
     include:
@@ -50,5 +51,5 @@ jobs:
               - CIBW_BUILD=cp39-manylinux_aarch64
 
 install: source tools/travis/install.sh
-script: source tools/travis/test_script.sh
+script: source tools/travis/script.sh
 after_success: source tools/travis/after_success.sh

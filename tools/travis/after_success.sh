@@ -4,11 +4,11 @@ set -e
 
 if [[ $BUILD_WHEEL == true && $TRAVIS_EVENT_TYPE != pull_request ]]; then
     if [[ $TRAVIS_EVENT_TYPE == cron ]]; then
-        ANACONDA_ORG="toy_pkg-wheels-nightly"
-        ANACONDA_TOKEN="$TOY_PKG_NIGHTLY_UPLOAD_TOKEN"
+        ANACONDA_ORG="toy_pkg"
+        ANACONDA_TOKEN="$CONDA_UPLOAD_TOKEN"
     else
-        ANACONDA_ORG="toy_pkg-wheels-staging"
-        ANACONDA_TOKEN="$TOY_PKG_STAGING_UPLOAD_TOKEN"
+        ANACONDA_ORG="toy_pkg"
+        ANACONDA_TOKEN="$CONDA_UPLOAD_TOKEN"
     fi
 
     MINICONDA_URL="https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-aarch64.sh"
