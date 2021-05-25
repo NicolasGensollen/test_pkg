@@ -12,6 +12,12 @@ cache:
     directories:
         - $HOME/.cache/pip
         - $HOME/.ccache
+
+env:
+    global:
+        - CPU_COUNT=3
+        - TEST_DIR=/tmp/toy_pkg
+
 jobs:
     include:
 
