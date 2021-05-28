@@ -10,6 +10,5 @@ pwd
 python -m pytest --pyargs toy_pkg --cov-report=xml --cov=toy_pkg
 
 if [[ $TEST_DOC == true ]]; then
-    echo "Running make test-doc...";
-    make test-doc
+    bash tools/github/test_docs.sh
 fi
