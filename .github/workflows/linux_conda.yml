@@ -64,9 +64,6 @@ jobs:
       - shell: bash {0}
         run: ./tools/github/test_docs.sh
         name: 'Run doctests'
-      - shell: bash {0}
-        run: ./tools/flake8_diff.sh
-        name: 'Run Flake8 diff'
       - uses: codecov/codecov-action@v1
         if: success()
         name: 'Upload coverage to CodeCov'
