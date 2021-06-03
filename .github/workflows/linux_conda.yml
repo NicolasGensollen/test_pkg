@@ -3,7 +3,7 @@ name: 'linux macos with conda'
 on:
   push:
     branches:
-      - "main"
+      - "master"
   pull_request:
     branches:
       - '*'

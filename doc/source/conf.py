@@ -127,7 +127,7 @@ sphinx_gallery_conf = {
         'org': 'toy_pkg',
         'repo': 'toy_pkg.github.io',
         'binderhub_url': 'https://mybinder.org',
-        'branch': 'main',
+        'branch': 'master',
         'dependencies': ['../../requirements-build-docs.txt',
                          '../binder/requirements.txt'],
         'notebooks_dir': 'examples'
