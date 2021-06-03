@@ -79,7 +79,7 @@ jobs:
                     echo ${CI_PULL_REQUEST//*pull\//} | tee merge.txt
                     if [[ $(cat merge.txt) != "" ]]; then
                         echo "Merging $(cat merge.txt)";
-                        echo $(git log $(git fetch upstream "refs/pull/$(cat merge.txt)/head")..upstream/main --pretty=format:'%h - %s');
+                        echo $(git log $(git fetch upstream "refs/pull/$(cat merge.txt)/head")..upstream/master --pretty=format:'%h - %s');
                         git pull --ff-only upstream "refs/pull/$(cat merge.txt)/merge";
                     else
                         echo "Nuthin to do";
