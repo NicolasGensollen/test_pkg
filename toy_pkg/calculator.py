@@ -1,7 +1,9 @@
 """Calculator library containing basic math operations."""
 
+import warnings
 
-def add(first_term, second_term):
+
+def add(first_term, second_term, useless=None, useless2=None):
     """Add first and second term.
 
     Parameters
@@ -11,6 +13,18 @@ def add(first_term, second_term):
 
     second_term : Number
         Second term for the addition.
+
+    useless : Number
+        Useless parameter. Does nuthin.
+
+        .. deprecated:: 0.0.3
+           `useless` is deprecated in 0.0.3 and will be removed
+           in 0.0.5.
+
+    useless2 : Number
+        Useless parameter.
+
+        .. versionadded:: 0.0.3
 
     Returns
     -------
@@ -42,6 +56,10 @@ def add(first_term, second_term):
     .. footbibliography::
 
     """
+    if useless is not None:
+        warnings.warn(FutureWarning,
+                      ("`useless` is deprecated in 0.0.3 "
+                       "and will be removed in 0.0.5"))
     result = first_term + second_term
     return result
 
