@@ -1,4 +1,7 @@
+# -*- coding: utf-8 -*-
+
 import os
+import sys
 import time
 import warnings
 import hashlib
@@ -7,6 +10,87 @@ import pickle
 import shutil
 import pandas as pd
 from sklearn.utils import check_random_state
+
+
+docdict = dict()
+
+# Verbose
+docdict['verbose'] = """
+verbose : bool, str, int, or None
+    Verbosity level.
+"""
+
+docdict_indented = dict()
+
+
+def indentcount_lines(lines):
+    """ Minimum indent for all lines in line list
+    >>> lines = [' one', '  two', '   three']
+    >>> indentcount_lines(lines)
+    1
+    >>> lines = []
+    >>> indentcount_lines(lines)
+    0
+    >>> lines = [' one']
+    >>> indentcount_lines(lines)
+    1
+    >>> indentcount_lines(['    '])
+    0
+    """
+    indentno = sys.maxsize
+    for line in lines:
+        stripped = line.lstrip()
+        if stripped:
+            indentno = min(indentno, len(line) - len(stripped))
+    if indentno == sys.maxsize:
+        return 0
+    return indentno
+
+
+def fill_doc(f):
+    """Fill a docstring with docdict entries.
+
+    Parameters
+    ----------
+    f : callable
+        The function to fill the docstring of. Will be modified in place.
+
+    Returns
+    -------
+    f : callable
+        The function, potentially with an updated ``__doc__``.
+    """
+    docstring = f.__doc__
+    if not docstring:
+        return f
+    lines = docstring.splitlines()
+    if len(lines) < 2:
+        icount = 0
+    else:
+        icount = indentcount_lines(lines[1:])
+    try:
+        indented = docdict_indented[icount]
+    except KeyError:
+        indent = ' ' * icount
+        docdict_indented[icount] = indented = {}
+        for name, dstr in docdict.items():
+            lines = dstr.splitlines()
+            try:
+                newlines = [lines[0]]
+                for line in lines[1:]:
+                    newlines.append(indent + line)
+                indented[name] = '\n'.join(newlines)
+            except IndexError:
+                indented[name] = dstr
+    try:
+        f.__doc__ = docstring % indented
+    except (TypeError, ValueError, KeyError) as exp:
+        funcname = f.__name__
+        funcname = docstring.split('\n')[0] if funcname is None else funcname
+        raise RuntimeError('Error documenting %s:\n%s'
+                           % (funcname, str(exp)))
+    return f
+
 
 def get_data_dirs(data_dir=None):
     """Returns the directories in which to look for data.

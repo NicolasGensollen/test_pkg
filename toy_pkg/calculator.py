@@ -1,9 +1,12 @@
 """Calculator library containing basic math operations."""
 
 import warnings
+from .utils import fill_doc
 
 
-def add(first_term, second_term, useless=None, useless2=None):
+@fill_doc
+def add(first_term, second_term, useless=None,
+        useless2=None, verbose=None):
     """Add first and second term.
 
     Parameters
@@ -25,6 +28,7 @@ def add(first_term, second_term, useless=None, useless2=None):
         Useless parameter.
 
         .. versionadded:: 0.0.3
+    %(verbose)s
 
     Returns
     -------
@@ -61,10 +65,13 @@ def add(first_term, second_term, useless=None, useless2=None):
                       ("`useless` is deprecated in 0.0.3 "
                        "and will be removed in 0.0.5"))
     result = first_term + second_term
+    if verbose:
+        print(f"{first_term} + {second_term} = {result}")
     return result
 
 
-def subtract(first_term, second_term):
+@fill_doc
+def subtract(first_term, second_term, verbose=None):
     """Subtract second term from first term.
 
     Parameters
@@ -74,6 +81,7 @@ def subtract(first_term, second_term):
 
     second_term : Number
         Second term for the subtraction.
+    %(verbose)s
 
     Returns
     -------
@@ -97,6 +105,8 @@ def subtract(first_term, second_term):
 
     """
     result = first_term - second_term
+    if verbose:
+        print(f"{first_term} - {second_term} = {result}")
     return result
 
 
