@@ -46,6 +46,7 @@ extensions = ['sphinx_gallery.gen_gallery',
               'sphinx.ext.intersphinx',
               'sphinx.ext.napoleon',
               'sphinxcontrib.bibtex',
+              'sphinxext.opengraph',
               ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -134,4 +135,9 @@ sphinx_gallery_conf = {
     }
 }
 
+
+# -- sphinxext.opengraph configuration -------------------------------------
+ogp_site_url = "https://toy-pkg.readthedocs.io/en/latest/?badge=latest"
+ogp_image = "https://dirty-cat.github.io/stable/_static/dirty_cat.svg"
+ogp_use_first_image = True
 
