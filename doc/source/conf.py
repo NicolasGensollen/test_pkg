@@ -140,4 +140,4 @@ sphinx_gallery_conf = {
 ogp_site_url = "https://toy-pkg.readthedocs.io/en/latest/?badge=latest"
 ogp_image = "https://dirty-cat.github.io/stable/_static/dirty_cat.svg"
 ogp_use_first_image = True
-
+ogp_site_name = "Toy Pkg"
