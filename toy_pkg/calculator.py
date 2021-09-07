@@ -10,7 +10,14 @@ def add(first_term, second_term, useless=None,
     """Add first and second term.
 
     .. tip::
-        Test tip directive.
+        When generating documentation locally, you can
+        build only specific files to reduce building time.
+        To do so, use the filename_pattern:
+
+        .. code-block::
+
+            python3 -m sphinx -D sphinx_gallery_conf.filename_pattern\\
+            =plot_decoding_tutorial.py -b html -d _build/doctrees . _build/html
 
     Parameters
     ----------
