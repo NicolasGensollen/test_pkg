@@ -77,6 +77,10 @@ def add(first_term, second_term, useless=None,
 def subtract(first_term, second_term, verbose=None):
     """Subtract second term from first term.
 
+    .. epigraph::
+
+        Try epigraph for fun...
+
     Parameters
     ----------
     first_term : Number
