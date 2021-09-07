@@ -9,6 +9,9 @@ def add(first_term, second_term, useless=None,
         useless2=None, verbose=None):
     """Add first and second term.
 
+    .. tip::
+        Test tip directive.
+
     Parameters
     ----------
     first_term : Number
