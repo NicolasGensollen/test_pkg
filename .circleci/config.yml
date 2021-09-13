@@ -191,9 +191,58 @@ jobs:
                 fi
             - save_data_cache
 
+    deploy:
+        docker:
+            - image: circleci/python:3.9
+        steps:
+            - attach_workspace:
+                at: /tmp/build
+            - run:
+                name: Fetch docs
+                command: |
+                    set -e
+                    mkdir -p ~/.ssh
+                    echo -e "Host *\nStrictHostKeyChecking no" > ~/.ssh/config
+                    chmod og= ~/.ssh/config
+                    if [ ! -d ~/toy_pkg.github.io ]; then
+                        git clone git@github.com:NicolasGensollen/toy_pkg.github.io.git ~/toy_pkg.github.io --depth=1
+                    fi
+            - run:
+                name: Deploy dev docs
+                command: |
+                    set -e;
+                    echo "${CIRCLE_BRANCH}";
+                    if [ "${CIRCLE_BRANCH}" == "master" ]; then
+                        git config --global user.email "circle@toy_pkg.com";
+                        git config --global user.name "CircleCI";
+                        cd ~/toy_pkg.github.io;
+                        echo "test";
+                        git checkout master
+                        git remote -v
+                        git fetch origin
+                        git reset --hard origin/master
+                        git clean -xdf
+                        echo "Deploying dev docs for ${CIRCLE_BRANCH}.";
+                        rm -Rf dev;
+                        cp -a /tmp/build/html dev;
+                        git add -A;
+                        git commit -m "CircleCI update of dev docs (${CIRCLE_BUILD_NUM}).";
+                        echo "test2";
+                        git push origin master;
+                    else
+                        echo "No deployment (build: ${CIRCLE_BRANCH}).";
+                    fi
 workflows:
     version: 2
 
-    build_doc:
+    build_and_deploy_doc:
         jobs:
             - build_docs
+
+            - deploy:
+                requires:
+                    - build_docs
+                filters:
+                    branches:
+                        only:
+                            - master
