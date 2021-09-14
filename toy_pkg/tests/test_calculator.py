@@ -11,6 +11,7 @@ class TestCalculator:
         """Tests for addition."""
         assert 4 == calculator.add(2, 2)
         assert 16 == calculator.add(10, 6)
+        assert 0 == calculator.add(10, -10)
 
     def test_subtraction(self):
         """Tests for substraction."""
