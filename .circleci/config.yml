@@ -195,9 +195,6 @@ jobs:
         docker:
             - image: circleci/python:3.9
         steps:
-            - add_ssh_keys:
-                fingerprints:
-                    - "c7:41:1b:04:58:17:5a:32:c0:0f:aa:83:4c:c7:2d:10"
             - attach_workspace:
                 at: /tmp/build
             - run:
