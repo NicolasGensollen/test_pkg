@@ -197,7 +197,7 @@ jobs:
         steps:
             - add_ssh_keys:
                 fingerprints:
-                    - "SO:ME:FIN:G:ER:PR:IN:T"
+                    - "c7:41:1b:04:58:17:5a:32:c0:0f:aa:83:4c:c7:2d:10"
             - attach_workspace:
                 at: /tmp/build
             - run:
@@ -232,6 +232,7 @@ jobs:
                         git commit -m "CircleCI update of dev docs (${CIRCLE_BUILD_NUM}).";
                         echo "test2";
                         git push origin master;
+                        echo "Sucess";
                     else
                         echo "No deployment (build: ${CIRCLE_BRANCH}).";
                     fi
