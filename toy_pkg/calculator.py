@@ -170,6 +170,9 @@ def divide(first_term, second_term):
     second_term : Number
         Second term for the division.
 
+        .. warning::
+            Should not be zero!
+
     Returns
     -------
     result : Number
