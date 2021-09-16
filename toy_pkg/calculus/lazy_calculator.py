@@ -9,6 +9,8 @@ Authors: Nicolas Gensollen
 """
 
 import time
+from toy_pkg.calculus import (add, subtract,
+                              multiply, divide)
 
 
 def lazy_add(first_term, second_term, secs=0):
@@ -50,7 +52,6 @@ def lazy_add(first_term, second_term, secs=0):
     lazy_divide : Division
 
     """
-    from .calculator import add
     result = add(first_term, second_term)
     time.sleep(secs)
     return result
@@ -95,7 +96,6 @@ def lazy_subtract(first_term, second_term, secs=0):
     0
 
     """
-    from .calculator import subtract
     result = subtract(first_term, second_term)
     time.sleep(secs)
     return result
@@ -140,7 +140,6 @@ def lazy_multiply(first_term, second_term, secs=0):
     0
 
     """
-    from .calculator import multiply
     result = multiply(first_term, second_term)
     time.sleep(secs)
     return result
@@ -192,7 +191,6 @@ def lazy_divide(first_term, second_term, secs=0):
     0.5
 
     """
-    from .calculator import divide
     result = divide(first_term, second_term)
     time.sleep(secs)
     return result

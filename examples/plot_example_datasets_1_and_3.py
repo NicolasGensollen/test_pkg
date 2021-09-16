@@ -26,7 +26,7 @@ print(data3.description)
 #
 # computation on both datasets
 import pandas as pd
-from toy_pkg.lazy_calculator import lazy_add
+from toy_pkg.calculus import lazy_add
 
 tot = 0
 df = pd.concat([pd.read_csv(data1.data),

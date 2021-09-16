@@ -16,7 +16,7 @@ print(data.description)
 ######################################################
 # Perform some computation
 import pandas as pd
-from toy_pkg.lazy_calculator import lazy_add
+from toy_pkg.calculus import lazy_add
 
 tot = 0
 df = pd.concat(map(pd.read_csv, data.data))

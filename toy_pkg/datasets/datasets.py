@@ -2,7 +2,7 @@
 import numpy as np
 import pandas as pd
 from sklearn.utils import check_random_state, Bunch
-from .utils import _get_dataset_dir, _fetch_files
+from toy_pkg._utils.utils import _get_dataset_dir, _fetch_files
 
 def fetch_fake_dataset_1(data_dir=None, verbose=1):
     """Download dataset 'fake_dataset_1'.

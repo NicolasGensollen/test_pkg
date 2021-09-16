@@ -1,7 +1,7 @@
 """Calculator library containing basic math operations."""
 
 import warnings
-from .utils import fill_doc
+from toy_pkg._utils import fill_doc
 
 
 @fill_doc

@@ -11,7 +11,7 @@ Athor: Nicolas Gensollen
 
 #########################################################
 # Load functions
-from toy_pkg.lazy_calculator import lazy_add, lazy_subtract
+from toy_pkg.calculus import lazy_add, lazy_subtract
 
 #########################################################
 # Perform some relatively long computations

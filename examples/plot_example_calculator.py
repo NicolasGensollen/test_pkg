@@ -7,7 +7,7 @@ A simple example.
 
 ####################################
 # Load the package
-from toy_pkg.calculator import add, subtract
+from toy_pkg.calculus import add, subtract
 
 
 ####################################
