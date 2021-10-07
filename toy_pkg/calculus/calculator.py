@@ -45,10 +45,20 @@ def add(first_term, second_term, useless=None,
     result : Number
         Result of the addition.
 
+    See Also
+    --------
+    subtract : Subtraction.
+    multiply : Multiplication.
+    divide : Division.
+
     Notes
     -----
     Unrelated reference by :footcite:`Gensollen2020` for testing.
     Another ref to a website :footcite:`NicolasGensollen` for testing.
+
+    References
+    ----------
+    .. footbibliography::
 
     Examples
     --------
@@ -58,17 +68,6 @@ def add(first_term, second_term, useless=None,
     0
     >>> add(0, 0)
     0
-
-    See Also
-    --------
-    subtract : Subtraction
-    multiply : Multiplication
-    divide : Division
-
-    References
-    ----------
-    .. footbibliography::
-
     """
     if useless is not None:
         warnings.warn(FutureWarning,
@@ -104,9 +103,9 @@ def subtract(first_term, second_term, verbose=None):
 
     See Also
     --------
-    subtract : Subtraction
-    multiply : Multiplication
-    divide : Division
+    subtract : Subtraction.
+    multiply : Multiplication.
+    divide : Division.
 
     Examples
     --------
@@ -116,7 +115,6 @@ def subtract(first_term, second_term, verbose=None):
     2
     >>> subtract(0, 0)
     0
-
     """
     result = first_term - second_term
     if verbose:
@@ -126,6 +124,8 @@ def subtract(first_term, second_term, verbose=None):
 
 def multiply(first_term, second_term):
     """Multiply first term by second term.
+
+    This function multiplies the first term with the second.
 
     Parameters
     ----------
@@ -142,9 +142,9 @@ def multiply(first_term, second_term):
 
     See Also
     --------
-    add : Addition
-    subtract : Subtraction
-    divide : Division
+    add : Addition.
+    subtract : Subtraction.
+    divide : Division.
 
     Examples
     --------
@@ -154,13 +154,14 @@ def multiply(first_term, second_term):
     -1
     >>> multiply(0, 0)
     0
-
     """
     result = first_term * second_term
     return result
 
 def divide(first_term, second_term):
     """Divide first term by second term.
+
+    This function divides the first term by the second term.
 
     Parameters
     ----------
@@ -185,9 +186,9 @@ def divide(first_term, second_term):
 
     See Also
     --------
-    add : Addition
-    subtract : Subtraction
-    multiply : Multiplication
+    add : Addition.
+    subtract : Subtraction.
+    multiply : Multiplication.
 
     Examples
     --------

@@ -10,10 +10,6 @@ Documentation for Toy_pkg
     user_guide.rst
     auto_examples/index.rst
 
-Toy_pkg Calculator
-==================
-.. automodule:: toy_pkg.calculator
-    :members:
 
 Indices and tables
 ==================
