@@ -26,3 +26,4 @@ class TestCalculator:
     def test_division(self):
         """Tests for division."""
         assert 10 == divide(100, 10)
+        assert 10 == divide(1000, 100)
