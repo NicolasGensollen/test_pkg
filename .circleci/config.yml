@@ -219,7 +219,6 @@ jobs:
                         git config --global user.email "circle@toy_pkg.com";
                         git config --global user.name "CircleCI";
                         cd ~/toy_pkg.github.io;
-                        echo "test";
                         git checkout master
                         git remote -v
                         git fetch origin
@@ -227,12 +226,10 @@ jobs:
                         git clean -xdf
                         echo "Deploying dev docs for ${CIRCLE_BRANCH}.";
                         rm -Rf dev;
-                        cp -a /tmp/build/html dev;
+                        cp -r /tmp/build/html dev;
                         git add -A;
                         git commit -m "CircleCI update of dev docs (${CIRCLE_BUILD_NUM}).";
-                        echo "test2";
                         git push origin master;
-                        echo "Sucess";
                     else
                         echo "No deployment (build: ${CIRCLE_BRANCH}).";
                     fi
