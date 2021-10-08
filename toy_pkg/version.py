@@ -3,7 +3,7 @@
 toy_pkg version, required package versions, and utilities for checking
 """
 
-__version__ = '0.0.4'
+__version__ = '0.0.5.dev'
 
 _NILEARN_INSTALL_MSG = 'See %s for installation information.' % (
     'http://github.com/NicolasGensollen/toy_pkg')
