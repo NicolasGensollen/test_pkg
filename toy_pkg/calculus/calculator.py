@@ -9,6 +9,8 @@ def add(first_term, second_term, useless=None,
         useless2=None, verbose=None):
     """Add first and second term.
 
+    This function adds ``first_term`` with ``second_term``.
+
     .. tip::
         When generating documentation locally, you can
         build only specific files to reduce building time.
@@ -83,6 +85,8 @@ def add(first_term, second_term, useless=None,
 def subtract(first_term, second_term, verbose=None):
     """Subtract second term from first term.
 
+    This function subtracts ``second_term`` from ``first_term``.
+
     .. epigraph::
 
         Try epigraph for fun...
@@ -125,7 +129,7 @@ def subtract(first_term, second_term, verbose=None):
 def multiply(first_term, second_term):
     """Multiply first term by second term.
 
-    This function multiplies the first term with the second.
+    This function multiplies ``first_term`` with ``second_term``.
 
     Parameters
     ----------
@@ -158,10 +162,11 @@ def multiply(first_term, second_term):
     result = first_term * second_term
     return result
 
+
 def divide(first_term, second_term):
     """Divide first term by second term.
 
-    This function divides the first term by the second term.
+    This function divides ``first_term`` by ``second_term``.
 
     Parameters
     ----------
@@ -207,6 +212,8 @@ def divide(first_term, second_term):
 
 def power(term, exponent):
     """Raise term to exponent.
+
+    This function raises ``term`` to ``exponent``.
 
     Parameters
     ----------
