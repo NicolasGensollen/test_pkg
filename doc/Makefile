@@ -26,6 +26,11 @@ html-strict:
 	@echo
 	@echo "Build finished. The HTML pages are in _build/html."
 
+html:
+	$(SPHINXBUILD) -T -n -b html $(SOURCEDIR) $(BUILDDIRDEV) $(SPHINXOPTS)
+	@echo
+	@echo "Build finished. The HTML pages are in _build/html."
+
 html_dev-noplot:
 	$(SPHINXBUILD) -D plot_gallery=0 -b html $(SOURCEDIR) $(BUILDDIRDEV) $(SPHINXOPTS)
 	@echo
@@ -39,3 +44,16 @@ html_dev-pattern:
 clean:
 	-rm -rf $(BUILDDIR)/*
 	-rm -rf $(SOURCEDIR)/auto_examples/
+
+install:
+	rm -rf $(BUILDDIRDEV)/doctrees $(BUILDDIR)/toy_pkg.github.io
+	git clone --no-checkout --depth 1 git@github.com:NicolasGensollen/toy_pkg.github.io.git $(BUILDDIR)/toy_pkg.github.io
+	rm -Rf $(BUILDDIR)/toy_pkg.github.io/stable;
+	mkdir $(BUILDDIR)/toy_pkg.github.io/stable;
+	make html
+	cd $(BUILDDIR) && \
+	cp -r html/* toy_pkg.github.io/stable/ && \
+	cd toy_pkg.github.io && \
+	git add -A && \
+	git commit -a -m 'Make install' && \
+	git push
