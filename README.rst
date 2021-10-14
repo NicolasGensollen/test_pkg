@@ -28,7 +28,11 @@ This is a simple and useless example package to test various CI stuffs.
 Install
 -------
 
-**TODO:** add install steps here.
+```
+$ git clone git@github.com:NicolasGensollen/toy_pkg.git
+$ cd toy_pkg
+$ pip install -e .
+```
 
 Authors
 -------
