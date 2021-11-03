@@ -9,6 +9,7 @@ Documentation for Toy_pkg
     authors.rst
     user_guide.rst
     auto_examples/index.rst
+    modules/reference.rst
 
 
 Indices and tables

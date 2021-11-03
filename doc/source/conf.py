@@ -44,7 +44,7 @@ extensions = ['sphinx_gallery.gen_gallery',
               'sphinx.ext.autosummary',
               'sphinx.ext.imgmath',
               'sphinx.ext.intersphinx',
-              'sphinx.ext.napoleon',
+              'numpydoc',
               'sphinxcontrib.bibtex',
               'sphinxext.opengraph',
               ]
@@ -107,7 +107,14 @@ _python_doc_base = 'https://docs.python.org/3.6'
 # Example configuration for intersphinx: refer to the Python standard library.
 intersphinx_mapping = {
     'python': (_python_doc_base, None),
-    'numpy': ('https://docs.scipy.org/doc/numpy', None),
+    'numpy': ('https://numpy.org/doc/stable/', None),
+    'scipy': ('http://scipy.github.io/devdocs/', None),
+    'matplotlib': ('https://matplotlib.org/', None),
+    'sklearn': ('https://scikit-learn.org/stable/', None),
+    'nibabel': ('https://nipy.org/nibabel', None),
+    'pandas': ('https://pandas.pydata.org/pandas-docs/stable/', None),
+    'nistats': ('https://nistats.github.io', None),
+    'joblib': ('https://joblib.readthedocs.io/en/latest/', None),
 }
 
 extlinks = {

@@ -9,16 +9,16 @@ def fetch_fake_dataset_1(data_dir=None, verbose=1):
 
     Parameters
     ----------
-    data_dir : string, optional
+    data_dir : :obj:`str`, optional
         Path of the data directory. Used to force data storage in a specified
         location. Default: None
 
-    verbose : int, optional
+    verbose : :obj:`int`, optional
         Verbosity level (0 means no message). Default=1.
 
     Returns
     -------
-    data : sklearn.datasets.base.Bunch
+    data : :func:`sklearn.utils.Bunch`
         Dictionary-like object
 
     """
@@ -41,16 +41,16 @@ def fetch_fake_dataset_2(data_dir=None, verbose=1):
 
     Parameters
     ----------
-    data_dir : string, optional
+    data_dir : :obj:`str`, optional
         Path of the data directory. Used to force data storage in a specified
         location. Default: None
 
-    verbose : int, optional
+    verbose : :obj:`int`, optional
         Verbosity level (0 means no message). Default=1.
 
     Returns
     -------
-    data : sklearn.datasets.base.Bunch
+    data : :func:`sklearn.utils.Bunch`
         Dictionary-like object
 
     """
@@ -75,16 +75,16 @@ def fetch_fake_dataset_3(data_dir=None, verbose=1):
 
     Parameters
     ----------
-    data_dir : string, optional
+    data_dir : :obj:`str`, optional
         Path of the data directory. Used to force data storage in a specified
         location. Default: None
 
-    verbose : int, optional
+    verbose : :obj:`int`, optional
         Verbosity level (0 means no message). Default=1.
 
     Returns
     -------
-    data : sklearn.datasets.base.Bunch
+    data : :func:`sklearn.utils.Bunch`
         Dictionary-like object
 
     """

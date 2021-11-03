@@ -16,7 +16,7 @@ from toy_pkg.calculus import (add, subtract,
 def lazy_add(first_term, second_term, secs=0):
     """Lazy add first and second term.
 
-    Add the terms using :func:`toy_pkg.calculator.add`
+    Add the terms using :func:`toy_pkg.calculus.add`
     and sleep for the provided number of seconds.
 
     Parameters
@@ -47,7 +47,7 @@ def lazy_add(first_term, second_term, secs=0):
 
     See Also
     --------
-    layz_subtract : Subtraction
+    lazy_subtract : Subtraction
     lazy_multiply : Multiplication
     lazy_divide : Division
 
@@ -60,7 +60,7 @@ def lazy_add(first_term, second_term, secs=0):
 def lazy_subtract(first_term, second_term, secs=0):
     """Subtract second term from first term.
 
-    Subtract the terms using :func:`toy_pkg.calculator.subtract`
+    Subtract the terms using :func:`toy_pkg.calculus.subtract`
     and sleep for the provided number of seconds.
 
     Parameters
@@ -104,7 +104,7 @@ def lazy_subtract(first_term, second_term, secs=0):
 def lazy_multiply(first_term, second_term, secs=0):
     """Multiply first term by second term.
 
-    Multiply the terms using :func:`toy_pkg.calculator.multiply`
+    Multiply the terms using :func:`toy_pkg.calculus.multiply`
     and sleep for the provided number of seconds.
 
     Parameters
@@ -148,7 +148,7 @@ def lazy_multiply(first_term, second_term, secs=0):
 def lazy_divide(first_term, second_term, secs=0):
     """Divide first term by second term.
 
-    Divide the terms using :func:`toy_pkg.calculator.divide`
+    Divide the terms using :func:`toy_pkg.calculus.divide`
     and sleep for the provided number of seconds.
 
     Parameters

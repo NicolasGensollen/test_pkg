@@ -9,18 +9,18 @@ calculator module.
 
 #########################################################
 # Load functions
-from toy_pkg.calculus import lazy_add, lazy_subtract
+from toy_pkg.calculus import lazy_multiply, lazy_divide
 
 #########################################################
 # Perform long computations
 
-# Perform 1 + 1 and sleep for 2 minutes...
-result = lazy_add(1, 1, 2 * 60)
+# Perform 1 * 1 and sleep for 1 minute...
+result = lazy_multiply(1, 1, 60)
 print(result)
 
-# Perform 10 - 7 and sleep for 1 minute...
-result = lazy_subtract(10, 7, 60)
+# Perform 10 / 5 and sleep for 1 minute...
+result = lazy_divide(10, 5, 60)
 print(result)
 
-# Perform 20 + 42 and sleeps for 3 minutes...
-print(lazy_add(20, 42, 3 * 60))
+# Perform 10 * 42 and sleeps for 1 minutes...
+print(lazy_multiply(10, 42, 60))
