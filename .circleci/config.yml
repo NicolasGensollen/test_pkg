@@ -63,7 +63,7 @@ jobs:
                 name: Complete checkout
                 command: |
                     if ! git remote -v | grep upstream; then
-                        git remote add upstream git://github.com/NicolasGensollen/toy_pkg.git
+                        git remote add upstream git@github.com:NicolasGensollen/toy_pkg.git
                     fi
                     git fetch upstream
             - save_cache:
