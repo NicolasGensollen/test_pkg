@@ -2,7 +2,7 @@
 Basic example
 =============
 
-A simple example.
+A simple example of the calculus module of `toy_pkg`.
 """
 
 ####################################
