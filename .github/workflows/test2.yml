@@ -40,4 +40,9 @@ jobs:
         run: |
             python --version
             which python
-
+      - shell: bash {0}
+        name: 'Display env'
+        env:
+          TEST_VAR: "test"
+        run: |
+            python test.py
