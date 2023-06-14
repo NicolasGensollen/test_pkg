@@ -135,7 +135,10 @@ def subtract(first_term, second_term, verbose=None):
     return result
 
 
-def multiply(first_term, second_term):
+def multiply(
+    first_term: T,
+    second_term: T,
+) -> T:
     """Multiply first term by second term.
 
     This function multiplies ``first_term`` with ``second_term``.
