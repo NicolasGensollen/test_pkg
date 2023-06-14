@@ -91,7 +91,7 @@ def add(
 
 
 @fill_doc
-def subtract(first_term, second_term, verbose=None):
+def subtract(first_term: T, second_term: T, verbose=None) -> T:
     """Subtract second term from first term.
 
     This function subtracts ``second_term`` from ``first_term``.
