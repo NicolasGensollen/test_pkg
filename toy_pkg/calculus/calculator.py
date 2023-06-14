@@ -1,12 +1,21 @@
 """Calculator library containing basic math operations."""
 
 import warnings
+from typing import TypeVar
 from toy_pkg._utils import fill_doc
 
 
+T = TypeVar('T')
+
+
 @fill_doc
-def add(first_term, second_term, useless=None,
-        useless2=None, verbose=None):
+def add(
+    first_term: T,
+    second_term: T,
+    useless=None,
+    useless2=None,
+    verbose=None,
+) -> T:
     """Add first and second term.
 
     This function adds ``first_term`` with ``second_term``.
